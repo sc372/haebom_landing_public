@@ -80,24 +80,24 @@
       box-shadow: none;
     }
 
-    /* ─── “문의하기” 버튼 반응형 너비 ─── */
-    .btn-inquiry,.btn-phone {
-      display: block;
-      /* 너비 반응형 (기존 설정 유지) */
-      width: 100% !important;    
-      margin: 0 auto !important;
-      /* 높이 2배: 상하 padding */
-      padding: 1rem 0.25rem !important;
-      /* 폰트 크기 2배 */
-      font-size: 2rem !important;
-      line-height: 1.2 !important;
+    .btn-label-wrap {
+      font-size: clamp(1.4rem, 4vw, 1.8rem); /* 뷰포트 크기에 따라 자동 크기 조절 */
+      margin-right: 60px;
+      height: 60px;
     }
 
-    @media (min-width: 860px) {
-      .btn-group {
-        width: 860px !important;
-      }
+    .btn-sub-label {
+      font-weight: 300;
     }
+
+    .btn-timer {
+      font-weight: 700;
+    }
+
+    .btn-main-label {
+      font-weight: 500;
+    }
+
 
     /* (이전 flex-height 설정은 제거) */
     .modal-content {
@@ -179,23 +179,46 @@
     <div class="image-slide"><img src="images/17.png" alt="Design 17" /></div>
   </div>
 
-  <!-- 하단 sticky 문의하기 버튼 바 -->
-  <nav class="navbar fixed-bottom bg-light  d-flex align-items-center justify-content-center">
-      <div class="row g-1 w-100 btn-group">
-        <div class="col-6">
-          <button class="btn btn-primary w-100 btn-inquiry" data-bs-toggle="modal" data-bs-target="#inquiryModal">
-            <i class="bi bi-file-earmark-text-fill me-2"></i>
-            상담 신청
-          </button>
-        </div>
-        <div class="col-6">
-          <a href="tel:01027474112" class="btn btn-success w-100 btn-phone">
-            <i class="bi bi-headset me-2"></i>
-            바로전화
-          </a>
-        </div>
+
+  <!-- <nav class="navbar fixed-bottom bg-light d-flex align-items-center justify-content-center"
+    style="height: 90px;max-width: 860px;">
+    <button class="btn btn-primary w-100 h-100 btn-inquiry" data-bs-toggle="modal" data-bs-target="#inquiryModal">
+      <div class="btn-label-wrap d-flex align-items-center justify-content-center gap-2 flex-wrap">
+        <span class="btn-sub-label">마감전</span>
+        <span class="btn-timer">05:00:00</span>
+        <i class="bi bi-file-earmark-text-fill"></i>
+        <span class="btn-main-label">상담신청</span>
       </div>
+      </button>
+      <a href="tel:01027474112"
+        class="btn btn-success rounded-circle d-flex align-items-center justify-content-center position-absolute"
+        style="top: 50%; right: 0.5rem; transform: translateY(-50%); width: 60px; height: 60px; font-size: 1.8rem; z-index: 100;">
+        <i class="bi bi-telephone-fill"></i>
+      </a>
+    </div>
+  </nav> -->
+
+  <nav class="navbar fixed-bottom bg-light d-flex align-items-center justify-content-center" style="height: 90px;">
+    <div class="w-100" style="max-width: 860px; position: relative;">
+      <button class="btn btn-primary w-100 h-100 d-flex align-items-center justify-content-center" data-bs-toggle="modal"
+        data-bs-target="#inquiryModal" style="height: 90px; padding: 0;">
+        <div class="btn-label-wrap d-flex align-items-center justify-content-center gap-2 flex-wrap">
+          <span class="btn-sub-label">마감전</span>
+          <span class="btn-timer">05:00:00</span>
+          <i class="bi bi-file-earmark-text-fill"></i>
+          <span class="btn-main-label">상담신청</span>
+        </div>
+      </button>
+  
+      <a href="tel:01027474112"
+        class="btn btn-success rounded-circle d-flex align-items-center justify-content-center position-absolute"
+        style="top: 50%; right: 0.5rem; transform: translateY(-50%); width: 60px; height: 60px; font-size: 1.8rem; z-index: 100;">
+        <i class="bi bi-telephone-fill"></i>
+      </a>
+    </div>
   </nav>
+  
+  
 
   <!-- 문의하기 모달 -->
   <div class="modal fade" id="inquiryModal" tabindex="-1" aria-labelledby="inquiryModalLabel" aria-hidden="true">
