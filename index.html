@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>청소해봄</title>
+  <!-- 파비콘 추가 -->
+  <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico?">
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    crossorigin="anonymous" />
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+  <style>
+    /* 페이지 바닥 여백(footer 높이)만 남기고 모두 제거 */
+    body {
+      margin: 0;
+      padding: 0;
+      margin-bottom: 70px;
+    }
+
+    /* 슬라이드 리스트: 빈 여백 제거 */
+    .slides {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* 각 슬라이드: footer 높이 제외한 뷰포트 전체, 여백 제거 */
+    .image-slide {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    /* 모든 이미지: 컨테이너 안에서만 축소·확대, 절대 늘어나지 않음 */
+    .image-slide img {
+      display: block;
+      margin: 0;
+      padding: 0;
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+    }
+
+    /* 제목 스타일 */
+    .form-label-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+    /* 약관 텍스트 박스 */
+    .terms-box {
+      max-height: 150px;
+      overflow-y: auto;
+      border: 1px solid #ddd;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      background: #f9f9f9;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+
+    /* 모바일(<=576px)에서 나머지 이미지도 폭 100% */
+    @media (max-width: 576px) {
+      .image-slide img {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    /* 하단 버튼 바 투명 배경 */
+    .navbar.fixed-bottom {
+      background-color: transparent !important;
+      box-shadow: none;
+    }
+
+    /* ─── “문의하기” 버튼 반응형 너비 ─── */
+    .btn-inquiry,.btn-phone {
+      display: block;
+      /* 너비 반응형 (기존 설정 유지) */
+      width: 100% !important;    
+      margin: 0 auto !important;
+      /* 높이 2배: 상하 padding */
+      padding: 1rem 0.25rem !important;
+      /* 폰트 크기 2배 */
+      font-size: 2rem !important;
+      line-height: 1.2 !important;
+    }
+
+    @media (min-width: 860px) {
+      .btn-group {
+        width: 860px !important;
+      }
+    }
+
+    /* (이전 flex-height 설정은 제거) */
+    .modal-content {
+      display: flex;
+      flex-direction: column;
+      /* height: auto; */
+    }
+
+    /* 3) modal-body에만 스크롤 + 높이 제한 */
+    .modal-dialog-scrollable .modal-body {
+      overflow-y: auto;
+      max-height: calc(100vh - 2rem - 56px - 56px);
+      /* 2rem = 모달 위아래 margin
+        56px = 모달 헤더 높이(약)
+        56px = modal-footer 높이(약) 
+        필요시 숫자 조정 */
+    }
+
+    /* 4) footer sticky 유지 */
+    .modal-footer {
+      position: sticky;
+      bottom: 0;
+      background: #fff;
+      z-index: 10;
+    }
+
+    /* Footer 스타일 */
+    .site-footer {
+      margin-bottom: 100px;
+      padding: 1rem 0 0.5rem; 
+      color: #666;
+      line-height: 1.5;
+    }
+
+    /* 첫 줄 제목 */
+    .site-footer .footer-title {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #333;
+    }
+
+    /* 나머지 텍스트 */
+    .site-footer .footer-text {
+      font-size: 0.85rem;
+    }
+
+    /* 저작권 문구 */
+    .site-footer .copyright {
+      /* font-size: 0.75rem; */
+      color: #999;
+      margin-top: 0.5rem;
+    }    
+  </style>
+</head>
+
+<body>
+
+  <!-- 이미지 슬라이드 리스트 -->
+  <div class="container-fluid slides p-0 m-0">
+    <!-- 1번 슬라이드: 폭 100vw -->
+    <div class="image-slide">
+      <img src="images/1.jpg" alt="Design 1" />
+    </div>
+    <!-- 2~17번 슬라이드 -->
+    <div class="image-slide"><img src="images/2.png" alt="Design 2" /></div>
+    <div class="image-slide"><img src="images/3.gif" alt="Design 3" /></div>
+    <div class="image-slide"><img src="images/4.gif" alt="Design 4" /></div>
+    <div class="image-slide"><img src="images/6.png" alt="Design 6" /></div>
+    <div class="image-slide"><img src="images/7.jpg" alt="Design 7" /></div>
+    <div class="image-slide"><img src="images/8.gif" alt="Design 8" /></div>
+    <div class="image-slide"><img src="images/9.jpg" alt="Design 9" /></div>
+    <div class="image-slide"><img src="images/10.png" alt="Design 10" /></div>
+    <div class="image-slide"><img src="images/11.png" alt="Design 11" /></div>
+    <div class="image-slide"><img src="images/12.png" alt="Design 12" /></div>
+    <div class="image-slide"><img src="images/13.png" alt="Design 13" /></div>
+    <div class="image-slide"><img src="images/14.png" alt="Design 14" /></div>
+    <div class="image-slide"><img src="images/15.png" alt="Design 15" /></div>
+    <div class="image-slide"><img src="images/16.png" alt="Design 16" /></div>
+    <div class="image-slide"><img src="images/17.png" alt="Design 17" /></div>
+  </div>
+
+  <!-- 하단 sticky 문의하기 버튼 바 -->
+  <nav class="navbar fixed-bottom bg-light  d-flex align-items-center justify-content-center">
+      <div class="row g-1 w-100 btn-group">
+        <div class="col-6">
+          <button class="btn btn-primary w-100 btn-inquiry" data-bs-toggle="modal" data-bs-target="#inquiryModal">
+            <i class="bi bi-file-earmark-text-fill me-2"></i>
+            상담 신청
+          </button>
+        </div>
+        <div class="col-6">
+          <a href="tel:01027474112" class="btn btn-success w-100 btn-phone">
+            <i class="bi bi-headset me-2"></i>
+            바로전화
+          </a>
+        </div>
+      </div>
+  </nav>
+
+  <!-- 문의하기 모달 -->
+  <div class="modal fade" id="inquiryModal" tabindex="-1" aria-labelledby="inquiryModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <form id="inquiryForm">
+          <div class="modal-header">
+            <h5 class="modal-title" id="inquiryModalLabel">서비스 문의</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="닫기"></button>
+          </div>
+          <div class="modal-body">
+            <!-- 성함 -->
+            <div class="mb-3">
+              <label for="userName" class="form-label form-label-title">성함</label>
+              <input type="text" class="form-control" id="userName" name="userName" required />
+            </div>
+          
+            <!-- 연락처 -->
+            <div class="mb-3">
+              <label for="userPhone" class="form-label form-label-title">연락처</label>
+              <input type="tel" class="form-control" id="userPhone" name="userPhone" placeholder="010-1234-5678" required
+                pattern="\d{3}-\d{4}-\d{4}" maxlength="13" inputmode="numeric" />
+            </div>
+          
+            <!-- 연락 가능 시간 -->
+            <fieldset class="mb-3">
+              <legend class="form-label-title">연락가능시간</legend>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="contactTime" id="timeAM" value="오전" required />
+                <label class="form-check-label" for="timeAM">오전</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="contactTime" id="timePM" value="오후" />
+                <label class="form-check-label" for="timePM">오후</label>
+              </div>
+            </fieldset>
+          
+            <!-- 서비스 -->
+            <div class="mb-3">
+              <label class="form-label form-label-title">서비스</label>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="svc1" name="services" value="에어컨청소" />
+                <label class="form-check-label" for="svc1">에어컨청소</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="svc2" name="services" value="에어컨가스충전" />
+                <label class="form-check-label" for="svc2">에어컨가스충전</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="svc3" name="services" value="세탁기청소" />
+                <label class="form-check-label" for="svc3">세탁기청소</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="svc4" name="services" value="공기청정기청소" />
+                <label class="form-check-label" for="svc4">공기청정기청정</label>
+              </div>
+            </div>
+          
+            <!-- 약관 내용 -->
+            <div class="mb-3">
+              <label class="form-label form-label-title">약관 내용</label>
+              <div class="terms-box">
+                <strong>1. 수집·이용에 관한 사항</strong><br>
+                <em>개인정보의 수집 및 이용 목적</em><br>
+                ‘메리츠 파트너스’ 채용 서비스 관련 정보 제공 및 안내<br>
+                채용 이벤트 및 프로모션 안내<br>
+                채용 시장 조사 및 서비스 품질 향상<br><br>
+          
+                <em>수집·이용 항목</em><br>
+                성명, 거주지, 연령대, 성별, 전화번호, 직업<br><br>
+          
+                <em>개인정보의 보유 및 이용 기간</em><br>
+                본 동의서에 따라 수집된 개인정보는 수집일로부터 1년 간 보관되며,<br>
+                목적 달성 후 안전하게 폐기됩니다.<br><br>
+          
+                <em>동의 거부 권리 및 불이익</em><br>
+                귀하는 본 동의를 거부하실 수 있으며, 거부하신 경우에도<br>
+                ‘메리츠 파트너스’ 서비스 이용에는 제한이 없습니다.<br>
+                다만, 마케팅 정보 제공 등 부가 혜택 안내가 제한될 수 있습니다.
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="agreeTerms" required />
+                <label class="form-check-label" for="agreeTerms">
+                  약관에 동의합니다.
+                </label>
+              </div>
+            </div>    
+          </div> <!-- /.modal-body -->
+          <div class="modal-footer p-0">
+            <div id="formAlert" class="alert alert-danger alert-dismissible fade d-none w-100" role="alert">
+              <span id="formAlertMsg"></span>
+              <button type="button" class="btn-close" aria-label="Close" onclick="hideAlert()"></button>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">
+              상담 접수 
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer text-center">
+    <div class="container">
+      <p class="footer-title mb-1">해봄공조냉동 / 청소해봄</p>
+      <p class="footer-text mb-1">
+        경기도 부천시 원미구 조마루로371번길 60<br>
+        서원빌딩 청소해봄아카데미
+      </p>
+      <p class="footer-text mb-1">
+        사업자등록번호 226-16-63802<br>
+        상표등록번호 402022-0171276<br>
+        보험증권번호 2025-1785852
+      </p>
+      <p class="footer-text mb-1">상담전화, 문자접수 010-2747-4112</p>
+      <p class="copyright mb-0">&copy;haebompartners All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS Bundle (Popper 포함) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    crossorigin="anonymous"></script>
+
+  <!-- 폼 제출 & API 호출 -->
+  <script>
+    document.getElementById("inquiryForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      // 1) 서비스 최소 1개 선택 검증
+      hideAlert();
+
+      // 서비스 최소 1개 선택 검증
+      const checked = document.querySelectorAll('input[name="services"]:checked');
+      if (checked.length === 0) {
+        const alertEl = document.getElementById("formAlert");
+        document.getElementById("formAlertMsg").textContent = "서비스를 하나 이상 선택해 주세요.";
+        alertEl.classList.remove("d-none");
+        alertEl.classList.add("show");
+        return;
+      }
+
+      const data = {
+        userName: document.getElementById("userName").value,
+        userPhone: document.getElementById("userPhone").value,
+        contactTime: document.querySelector('input[name="contactTime"]:checked').value,
+        services: Array.from(checked).map(el => el.value),
+      };
+      fetch("https://api.example.com/submit-inquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      })
+        .then(res => { if (!res.ok) throw new Error("네트워크 오류"); return res.json(); })
+        .then(json => {
+          alert("접수가 완료되었습니다! 감사합니다.");
+          const bsModal = bootstrap.Modal.getInstance(document.getElementById("inquiryModal"));
+          bsModal.hide();
+          this.reset();
+        })
+        .catch(err => { console.error(err); alert("접수 중 오류가 발생했습니다."); });
+    });
+
+    // Alert 숨기기 함수
+      function hideAlert() {
+        const alertEl = document.getElementById("formAlert");
+        alertEl.classList.add("d-none");
+        alertEl.classList.remove("show");
+      }
+
+      // 폼 & 입력 요소 참조
+      const form = document.getElementById("inquiryForm");
+      const serviceCheckboxes = document.querySelectorAll('input[name="services"]');
+
+      // 체크박스 클릭 시 Alert 지우기
+      serviceCheckboxes.forEach(chk => {
+        chk.addEventListener("change", hideAlert);
+      });
+
+        // 전화번호 입력 시 자동 포맷
+          const phoneInput = document.getElementById("userPhone");
+          phoneInput.addEventListener("input", function () {
+            // 숫자만 추출, 최대 11자리
+            let digits = this.value.replace(/\D/g, "").slice(0, 11);
+            let formatted = "";
+
+            if (digits.length <= 3) {
+              formatted = digits;
+            } else if (digits.length <= 7) {
+              formatted = digits.slice(0, 3) + "-" + digits.slice(3);
+            } else {
+              formatted = digits.slice(0, 3) + "-" + digits.slice(3, 7) + "-" + digits.slice(7);
+            }
+
+            this.value = formatted;
+          });
+  </script>
+</body>
+
+</html>
