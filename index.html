@@ -81,8 +81,7 @@
     }
 
     .btn-label-wrap {
-      font-size: clamp(1.4rem, 4vw, 1.8rem); /* 뷰포트 크기에 따라 자동 크기 조절 */
-      margin-right: 60px;
+      font-size: clamp(1.2rem, 4vw, 1.8rem); /* 뷰포트 크기에 따라 자동 크기 조절 */
       height: 60px;
     }
 
@@ -97,6 +96,23 @@
     .btn-main-label {
       font-weight: 500;
     }
+
+    .btn-card {
+    background-color: red; /* 또는 #ffffff, 원하시면 완전 흰색도 가능 */
+    /* border: 1px solid #fff; */
+    color: #fff;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    /* border-radius: 0.75rem; */
+    font-size: 1rem;
+    /* box-shadow: 0 0 3px rgba(0,0,0,0.2); */
+  }
+
+  .btn-card .bi {
+    font-size: 1.6rem;
+  }
 
 
     /* (이전 flex-height 설정은 제거) */
@@ -180,47 +196,34 @@
   </div>
 
 
-  <!-- <nav class="navbar fixed-bottom bg-light d-flex align-items-center justify-content-center"
-    style="height: 90px;max-width: 860px;">
-    <button class="btn btn-primary w-100 h-100 btn-inquiry" data-bs-toggle="modal" data-bs-target="#inquiryModal">
-      <div class="btn-label-wrap d-flex align-items-center justify-content-center gap-2 flex-wrap">
-        <span class="btn-sub-label">마감전</span>
-        <span class="btn-timer">05:00:00</span>
-        <i class="bi bi-file-earmark-text-fill"></i>
-        <span class="btn-main-label">상담신청</span>
-      </div>
-      </button>
-      <a href="tel:01027474112"
-        class="btn btn-success rounded-circle d-flex align-items-center justify-content-center position-absolute"
-        style="top: 50%; right: 0.5rem; transform: translateY(-50%); width: 60px; height: 60px; font-size: 1.8rem; z-index: 100;">
-        <i class="bi bi-telephone-fill"></i>
-      </a>
-    </div>
-  </nav> -->
-
   <nav class="navbar fixed-bottom bg-light d-flex align-items-center justify-content-center" style="height: 90px;">
-    <div class="w-100" style="max-width: 860px; position: relative;">
-      <button class="btn btn-primary w-100 h-100 d-flex align-items-center justify-content-center" data-bs-toggle="modal"
-        data-bs-target="#inquiryModal" style="height: 90px; padding: 0;">
-        <div class="btn-label-wrap d-flex align-items-center justify-content-center gap-2 flex-wrap">
-          <span class="btn-sub-label">마감전</span>
-          <span class="btn-timer">05:00:00</span>
-          <i class="bi bi-file-earmark-text-fill"></i>
-          <span class="btn-main-label">상담신청</span>
-        </div>
-      </button>
+    <div class="w-100" style="max-width: 860px;">
+      <div class="d-flex gap-2 align-items-center h-100">
+        <div class="btn btn-primary w-100 h-100 d-flex align-items-center justify-content-center px-3"
+          style="height: 90px;">
   
-      <a href="tel:01027474112"
-        class="btn btn-success rounded-circle d-flex align-items-center justify-content-center position-absolute"
-        style="top: 50%; right: 0.5rem; transform: translateY(-50%); width: 60px; height: 60px; font-size: 1.8rem; z-index: 100;">
-        <i class="bi bi-telephone-fill"></i>
-      </a>
+          <!-- 왼쪽: 상담신청 텍스트 묶음 -->
+          <div class="btn-label-wrap d-flex align-items-center gap-2 flex-wrap"
+          data-bs-toggle="modal" data-bs-target="#inquiryModal" >
+            <span class="btn-sub-label">마감전</span>
+            <span class="btn-timer">05:00:00</span>
+            <div class="btn-card px-3 py-1 rounded d-flex align-items-center gap-1">
+              <span class="btn-main-label">상담신청</span>
+              <i class="bi bi-file-earmark-text-fill"></i>
+            </div>
+          </div>
+  
+          <!-- 오른쪽: 전화 버튼 -->
+          <a href="tel:01027474112"
+            class="btn btn-success d-flex align-items-center justify-content-center rounded-circle"
+            style="width: 48px; height: 48px; margin-left: 10px;">
+            <i class="bi bi-telephone-fill"></i>
+          </a>
+        </div>
+      </div>
     </div>
   </nav>
   
-  
-
-  <!-- 문의하기 모달 -->
   <div class="modal fade" id="inquiryModal" tabindex="-1" aria-labelledby="inquiryModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
       <div class="modal-content">
