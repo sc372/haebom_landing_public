@@ -80,8 +80,13 @@
       box-shadow: none;
     }
 
-    .btn-label-wrap {
-      font-size: clamp(1.4rem, 4vw, 1.8rem); /* 뷰포트 크기에 따라 자동 크기 조절 */
+    .btn-wrap {
+      background-color: #ef4d4d;
+      color: #ffffff;
+    }
+
+    .btn-inquiry-wrap {
+      font-size: clamp(1.3rem, 4vw, 1.8rem); /* 뷰포트 크기에 따라 자동 크기 조절 */
       height: 60px;
     }
 
@@ -99,22 +104,21 @@
     }
 
     .btn-card {
-    background-color: red; /* 또는 #ffffff, 원하시면 완전 흰색도 가능 */
-    /* border: 1px solid #fff; */
-    color: #fff;
-    font-weight: 500;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    /* border-radius: 0.75rem; */
-    font-size: 1rem;
+      background-color: #ffffff; /* 또는 #ffffff, 원하시면 완전 흰색도 가능 */
+      /* border: 1px solid #fff; */
+      color: #333333;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      /* border-radius: 0.75rem; */
+      font-size: 1rem;
     /* box-shadow: 0 0 3px rgba(0,0,0,0.2); */
-  }
+    }
 
-  .btn-card .bi {
-    font-size: 1.6rem;
-  }
-
+    .btn-card .bi {
+      font-size: 1.6rem;
+    }
 
     /* (이전 flex-height 설정은 제거) */
     .modal-content {
@@ -190,9 +194,9 @@
     <div class="image-slide"><img src="images/10.png" alt="Design 10" /></div>
     <div class="image-slide"><img src="images/11.png" alt="Design 11" /></div>
     <div class="image-slide"><img src="images/12.png" alt="Design 12" /></div>
-    <div class="image-slide"><img src="images/13.png" alt="Design 13" /></div>
-    <div class="image-slide"><img src="images/14.png" alt="Design 14" /></div>
-    <div class="image-slide"><img src="images/15.png" alt="Design 15" /></div>
+    <div class="image-slide"><img src="images/13.jpg" alt="Design 13" /></div>
+    <div class="image-slide"><img src="images/14.jpg" alt="Design 14" /></div>
+    <div class="image-slide"><img src="images/15.jpg" alt="Design 15" /></div>
     <div class="image-slide"><img src="images/16.png" alt="Design 16" /></div>
     <div class="image-slide"><img src="images/17.png" alt="Design 17" /></div>
   </div>
@@ -201,11 +205,11 @@
   <nav class="navbar fixed-bottom bg-light d-flex align-items-center justify-content-center" style="height: 90px;">
     <div class="w-100" style="max-width: 860px;">
       <div class="d-flex gap-2 align-items-center h-100">
-        <div class="btn btn-primary w-100 h-100 d-flex align-items-center justify-content-center px-3"
+        <div class="btn-wrap btn w-100 h-100 d-flex align-items-center justify-content-center px-3"
           style="height: 90px;">
   
           <!-- 왼쪽: 상담신청 텍스트 묶음 -->
-          <div class="btn-label-wrap d-flex align-items-center gap-2 flex-wrap"
+          <div class="btn-inquiry-wrap d-flex align-items-center gap-2 flex-wrap"
           data-bs-toggle="modal" data-bs-target="#inquiryModal" >
             <span class="btn-sub-label">마감전</span>
             <span class="btn-timer"></span>
@@ -217,7 +221,7 @@
   
           <a href="tel:01027474112"
             class="btn btn-success d-flex align-items-center justify-content-center rounded-circle"
-            style="width: 48px; height: 48px; margin-left: 10px;">
+            style="width: 48px; height: 48px; margin-left: 5px;">
             <i class="bi bi-telephone-fill"></i>
           </a>
         </div>
