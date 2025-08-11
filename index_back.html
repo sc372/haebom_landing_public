@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>청소해봄</title>
-  <!-- 파비콘 -->
+  <!-- 파비콘 추가 -->
   <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico?">
   <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -13,17 +13,20 @@
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
   <style>
+    /* 페이지 바닥 여백(footer 높이)만 남기고 모두 제거 */
     body {
       margin: 0;
       padding: 0;
       margin-bottom: 70px;
     }
 
+    /* 슬라이드 리스트: 빈 여백 제거 */
     .slides {
       margin: 0;
       padding: 0;
     }
 
+    /* 각 슬라이드: footer 높이 제외한 뷰포트 전체, 여백 제거 */
     .image-slide {
       margin: 0;
       padding: 0;
@@ -33,6 +36,7 @@
       overflow: hidden;
     }
 
+    /* 모든 이미지: 컨테이너 안에서만 축소·확대, 절대 늘어나지 않음 */
     .image-slide img {
       display: block;
       margin: 0;
@@ -44,11 +48,12 @@
       object-fit: contain;
     }
 
+    /* 제목 스타일 */
     .form-label-title {
       font-size: 1.25rem;
       font-weight: 700;
     }
-
+    /* 약관 텍스트 박스 */
     .terms-box {
       max-height: 150px;
       overflow-y: auto;
@@ -60,6 +65,8 @@
       line-height: 1.5;
     }
 
+
+    /* 모바일(<=576px)에서 나머지 이미지도 폭 100% */
     @media (max-width: 576px) {
       .image-slide img {
         width: 100%;
@@ -67,6 +74,7 @@
       }
     }
 
+    /* 하단 버튼 바 투명 배경 */
     .navbar.fixed-bottom {
       background-color: transparent !important;
       box-shadow: none;
@@ -84,41 +92,49 @@
     }
 
     .btn-sub-label {
-      font-size: clamp(1rem, 4vw, 1.6rem);
+      font-size: clamp(1rem, 4vw, 1.6rem); /* 뷰포트 크기에 따라 자동 크기 조절 */
       font-weight: 300;
     }
 
     .btn-timer {
-      font-size: clamp(1.6rem, 4vw, 1.8rem);
+      font-size: clamp(1.6rem, 4vw, 1.8rem); /* 뷰포트 크기에 따라 자동 크기 조절 */
       font-weight: 700;
     }
 
     .btn-main-label {
       font-weight: 500;
-      font-size: clamp(1.2rem, 4vw, 1.6rem);
+      font-size: clamp(1.2rem, 4vw, 1.6rem); /* 뷰포트 크기에 따라 자동 크기 조절 */
     }
 
     .btn-card {
-      background-color: #ffffff;
+      background-color: #ffffff; /* 또는 #ffffff, 원하시면 완전 흰색도 가능 */
       color: #333333;
       align-items: center;
       justify-content: center;
     }
 
     .btn-card .bi {
-      font-size: clamp(1.2rem, 4vw, 1.6rem);
+      font-size: clamp(1.2rem, 4vw, 1.6rem); /* 뷰포트 크기에 따라 자동 크기 조절 */
     }
 
+    /* (이전 flex-height 설정은 제거) */
     .modal-content {
       display: flex;
       flex-direction: column;
+      /* height: auto; */
     }
 
+    /* 3) modal-body에만 스크롤 + 높이 제한 */
     .modal-dialog-scrollable .modal-body {
       overflow-y: auto;
       max-height: calc(100vh - 2rem - 56px - 56px);
+      /* 2rem = 모달 위아래 margin
+        56px = 모달 헤더 높이(약)
+        56px = modal-footer 높이(약) 
+        필요시 숫자 조정 */
     }
 
+    /* 4) footer sticky 유지 */
     .modal-footer {
       position: sticky;
       bottom: 0;
@@ -126,27 +142,32 @@
       z-index: 10;
     }
 
+    /* Footer 스타일 */
     .site-footer {
       margin-bottom: 100px;
-      padding: 1rem 0 0.5rem;
+      padding: 1rem 0 0.5rem; 
       color: #666;
       line-height: 1.5;
     }
 
+    /* 첫 줄 제목 */
     .site-footer .footer-title {
       font-weight: 700;
       font-size: 1rem;
       color: #333;
     }
 
+    /* 나머지 텍스트 */
     .site-footer .footer-text {
       font-size: 0.85rem;
     }
 
+    /* 저작권 문구 */
     .site-footer .copyright {
+      /* font-size: 0.75rem; */
       color: #999;
       margin-top: 0.5rem;
-    }
+    }    
   </style>
 </head>
 
@@ -154,7 +175,11 @@
 
   <!-- 이미지 슬라이드 리스트 -->
   <div class="container-fluid slides p-0 m-0">
-    <div class="image-slide"><img src="images/1.gif" alt="Design 1" /></div>
+    <!-- 1번 슬라이드: 폭 100vw -->
+    <div class="image-slide">
+      <img src="images/1.gif" alt="Design 1" />
+    </div>
+    <!-- 2~17번 슬라이드 -->
     <div class="image-slide"><img src="images/2.png" alt="Design 2" /></div>
     <div class="image-slide"><img src="images/3.gif" alt="Design 3" /></div>
     <div class="image-slide"><img src="images/4.gif" alt="Design 4" /></div>
@@ -173,13 +198,16 @@
     <div class="image-slide"><img src="images/17.png" alt="Design 17" /></div>
   </div>
 
+
   <nav class="navbar fixed-bottom bg-light d-flex align-items-center justify-content-center" style="height: 70px;">
     <div class="w-100" style="max-width: 860px;">
       <div class="d-flex gap-2 align-items-center h-100">
-        <div class="btn-wrap rounded w-100 h-100 d-flex align-items-center justify-content-center"
+        <div class="btn-wrap rounded  w-100 h-100 d-flex align-items-center justify-content-center"
           style="height: 90px;">
-          <div class="btn-inquiry-wrap d-flex align-items-center gap-2 flex-wrap" data-bs-toggle="modal"
-            data-bs-target="#inquiryModal">
+  
+          <!-- 왼쪽: 상담신청 텍스트 묶음 -->
+          <div class="btn-inquiry-wrap d-flex align-items-center gap-2 flex-wrap"
+          data-bs-toggle="modal" data-bs-target="#inquiryModal" >
             <span class="btn-sub-label">특별할인마감</span>
             <span class="btn-timer"></span>
             <div class="btn-card px-2 py-1 rounded d-flex align-items-center">
@@ -187,6 +215,7 @@
               <i class="bi bi-file-earmark-text-fill"></i>
             </div>
           </div>
+  
           <a href="tel:01027474112"
             class="btn btn-success d-flex align-items-center justify-content-center rounded-circle"
             style="width: 48px; height: 48px; margin-left: 10px;">
@@ -196,8 +225,7 @@
       </div>
     </div>
   </nav>
-
-  <!-- Modal -->
+  
   <div class="modal fade" id="inquiryModal" tabindex="-1" aria-labelledby="inquiryModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
       <div class="modal-content">
@@ -212,21 +240,14 @@
               <label for="userName" class="form-label form-label-title">성함</label>
               <input type="text" class="form-control" id="userName" name="userName" required />
             </div>
-
+          
             <!-- 연락처 -->
             <div class="mb-3">
               <label for="userPhone" class="form-label form-label-title">연락처</label>
-              <input type="tel" class="form-control" id="userPhone" name="userPhone" placeholder="010-1234-5678"
-                required pattern="\d{3}-\d{4}-\d{4}" maxlength="13" inputmode="numeric" />
+              <input type="tel" class="form-control" id="userPhone" name="userPhone" placeholder="010-1234-5678" required
+                pattern="\d{3}-\d{4}-\d{4}" maxlength="13" inputmode="numeric" />
             </div>
-
-            <!-- 주소 -->
-            <div class="mb-3">
-              <label for="userAddress" class="form-label form-label-title">주소</label>
-              <input type="text" class="form-control" id="userAddress" name="userAddress" placeholder="주소를 입력하세요"
-                required />
-            </div>
-
+          
             <!-- 연락 가능 시간 -->
             <fieldset class="mb-3">
               <legend class="form-label-title">연락가능시간</legend>
@@ -239,57 +260,63 @@
                 <label class="form-check-label" for="timePM">오후</label>
               </div>
             </fieldset>
-
-            <!-- 서비스 (code_id로 value 설정) -->
+          
+            <!-- 서비스 -->
             <div class="mb-3">
               <label class="form-label form-label-title">서비스</label>
               <label class="form-check-label">(복수선택 가능)</label>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="svc1" name="services" value="AC_CLEAN" />
+                <input class="form-check-input" type="checkbox" id="svc1" name="services" value="에어컨 청소" />
                 <label class="form-check-label" for="svc1">에어컨 청소</label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="svc2" name="services" value="AC_CHARGE" />
+                <input class="form-check-input" type="checkbox" id="svc2" name="services" value="에어컨 가스충전" />
                 <label class="form-check-label" for="svc2">에어컨 가스충전</label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="svc3" name="services" value="DISH_CLEAN" />
+                <input class="form-check-input" type="checkbox" id="svc3" name="services" value="세탁기 청소" />
                 <label class="form-check-label" for="svc3">세탁기 청소</label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="svc4" name="services"
-                  value="AIR_FRESHER_CLAEN" />
+                <input class="form-check-input" type="checkbox" id="svc4" name="services" value="공기청정기 청소" />
                 <label class="form-check-label" for="svc4">공기청정기 청소</label>
               </div>
             </div>
-
+          
             <!-- 약관 내용 -->
             <div class="mb-3">
               <label class="form-label form-label-title">상담을 위한 개인정보 수집동의</label>
               <div class="terms-box">
-                <strong>📄 개인정보 수집 및 이용 동의서</strong><br><br>
+                <strong>📄 개인정보 수집 및 이용 동의서</strong><br>
+                <br>
                 <em>1. 수집하는 개인정보 항목</em><br>
-                이름, 연락처(휴대전화번호), 주소(선택사항), 상담내용<br><br>
+                이름, 연락처(휴대전화번호), 주소(선택사항), 상담내용<br>
+                <br>
                 <em>2. 수집 및 이용 목적</em><br>
-                서비스 상담 및 예약, 고객 문의 응대, 서비스 제공에 대한 안내 및 알림<br><br>
+                서비스 상담 및 예약, 고객 문의 응대, 서비스 제공에 대한 안내 및 알림<br>
+                <br>
                 <em>3. 보유 및 이용 기간</em><br>
-                수집일로부터 1년간 보관 후 파기 (단, 관련 법령에 따라 보관이 필요한 경우 해당 기간 동안 보관)<br><br>
+                수집일로부터 1년간 보관 후 파기 (단, 관련 법령에 따라 보관이 필요한 경우 해당 기간 동안 보관)<br>
+                <br>
                 <em>4. 동의 거부 권리 및 불이익 안내</em><br>
                 개인정보 제공을 거부할 권리가 있으나, 이 경우 상담 및 서비스 제공이 제한될 수 있습니다.<br>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="agreeTerms" required checked />
-                <label class="form-check-label" for="agreeTerms">약관에 동의합니다.</label>
+                <input class="form-check-input" type="checkbox" id="agreeTerms" required checked/>
+                <label class="form-check-label" for="agreeTerms">
+                  약관에 동의합니다.
+                </label>
               </div>
-            </div>
-          </div>
-
+            </div>    
+          </div> <!-- /.modal-body -->
           <div class="modal-footer p-0">
             <div id="formAlert" class="alert alert-danger alert-dismissible fade d-none w-100" role="alert">
               <span id="formAlertMsg"></span>
               <button type="button" class="btn-close" aria-label="Close" onclick="hideAlert()"></button>
             </div>
-            <button type="submit" class="btn btn-primary w-100">상담 접수</button>
+            <button type="submit" class="btn btn-primary w-100">
+              상담 접수 
+            </button>
           </div>
         </form>
       </div>
@@ -314,50 +341,19 @@
     </div>
   </footer>
 
-  <!-- Bootstrap JS Bundle -->
+  <!-- Bootstrap JS Bundle (Popper 포함) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
     crossorigin="anonymous"></script>
 
   <!-- 폼 제출 & API 호출 -->
   <script>
-    // 개발용 API 호스트
-    const API_HOST = "http://127.0.0.1:8000";
-
-    // 오프셋 포함 ISO 문자열 (예: 2025-07-26T14:00:00+09:00)
-    function nowIsoWithOffset() {
-      const d = new Date();
-      const tz = -d.getTimezoneOffset(); // minutes
-      const sign = tz >= 0 ? '+' : '-';
-      const hh = String(Math.floor(Math.abs(tz) / 60)).padStart(2, '0');
-      const mm = String(Math.abs(tz) % 60).padStart(2, '0');
-      const local = new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 19);
-      return `${local}${sign}${hh}:${mm}`;
-    }
-
-    // URL 쿼리에서 referrerId 추출 (?ref=XXXX)
-    function getReferrerId() {
-      const url = new URL(window.location.href);
-      return url.searchParams.get('ref') || '';
-    }
-
-    // Alert 숨기기
-    function hideAlert() {
-      const alertEl = document.getElementById("formAlert");
-      alertEl.classList.add("d-none");
-      alertEl.classList.remove("show");
-    }
-
-    // URL 쿼리에서 referrer_id 추출 (?referrer_id=XXXX)
-    function getReferrerId() {
-      const url = new URL(window.location.href);
-      return url.searchParams.get('referrer_id') || '';
-    }
-
-
-    document.getElementById("inquiryForm").addEventListener("submit", async function (e) {
+    document.getElementById("inquiryForm").addEventListener("submit", function (e) {
       e.preventDefault();
+
+      // 1) 서비스 최소 1개 선택 검증
       hideAlert();
 
+      // 서비스 최소 1개 선택 검증
       const checked = document.querySelectorAll('input[name="services"]:checked');
       if (checked.length === 0) {
         const alertEl = document.getElementById("formAlert");
@@ -367,82 +363,86 @@
         return;
       }
 
-      const name = document.getElementById("userName").value.trim();
-      const phoneFormatted = document.getElementById("userPhone").value;
-      const phoneDigits = phoneFormatted.replace(/\D/g, "");
-      const address = document.getElementById("userAddress").value.trim();
-      const contactTime = document.querySelector('input[name="contactTime"]:checked').value;
-      const callableCodeId = contactTime === '오전' ? 'CALLABLE_AM' : 'CALLABLE_PM';
-      const serviceCodeIds = Array.from(checked).map(el => el.value);
-
-      const payload = {
-        inquiryDatetime: nowIsoWithOffset(),
-        referrerId: getReferrerId(), // URL에서 받은 referrer_id 넣기
-        customerName: name,
-        customerPhoneNumber: phoneDigits,
-        customerAddress: address,
-        callableCodeId: callableCodeId,
-        memo: '',
-        serviceCodeIds: serviceCodeIds
+      const data = {
+        userName: document.getElementById("userName").value,
+        userPhone: document.getElementById("userPhone").value,
+        contactTime: document.querySelector('input[name="contactTime"]:checked').value,
+        services: Array.from(checked).map(el => el.value),
       };
+      fetch("https://api.example.com/submit-inquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      })
+        .then(res => { if (!res.ok) throw new Error("네트워크 오류"); return res.json(); })
+        .then(json => {
+          alert("접수가 완료되었습니다! 감사합니다.");
+          const bsModal = bootstrap.Modal.getInstance(document.getElementById("inquiryModal"));
+          bsModal.hide();
+          this.reset();
+        })
+        .catch(err => { console.error(err); alert("접수 중 오류가 발생했습니다."); });
+    });
 
-      try {
-        const res = await fetch(`${API_HOST}/api/v1/public/inquiry`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "X-Created-By": "landing"
-          },
-          body: JSON.stringify(payload)
-        });
-        if (!res.ok) {
-          const msg = await res.text();
-          throw new Error(msg || "네트워크 오류");
-        }
-
-        alert("접수가 완료되었습니다! 감사합니다.");
-        const bsModal = bootstrap.Modal.getInstance(document.getElementById("inquiryModal"));
-        bsModal.hide();
-        this.reset();
-      } catch (err) {
-        console.error(err);
-        alert("접수 중 오류가 발생했습니다.");
+    // Alert 숨기기 함수
+      function hideAlert() {
+        const alertEl = document.getElementById("formAlert");
+        alertEl.classList.add("d-none");
+        alertEl.classList.remove("show");
       }
-    });
 
-    // 체크박스 변경 시 Alert 숨기기
-    const serviceCheckboxes = document.querySelectorAll('input[name="services"]');
-    serviceCheckboxes.forEach(chk => {
-      chk.addEventListener("change", hideAlert);
-    });
+      // 폼 & 입력 요소 참조
+      const form = document.getElementById("inquiryForm");
+      const serviceCheckboxes = document.querySelectorAll('input[name="services"]');
 
-    // 전화번호 입력 시 자동 포맷
-    const phoneInput = document.getElementById("userPhone");
-    phoneInput.addEventListener("input", function () {
-      let digits = this.value.replace(/\D/g, "").slice(0, 11);
-      let formatted = "";
-      if (digits.length <= 3) {
-        formatted = digits;
-      } else if (digits.length <= 7) {
-        formatted = digits.slice(0, 3) + "-" + digits.slice(3);
-      } else {
-        formatted = digits.slice(0, 3) + "-" + digits.slice(3, 7) + "-" + digits.slice(7);
-      }
-      this.value = formatted;
-    });
+      // 체크박스 클릭 시 Alert 지우기
+      serviceCheckboxes.forEach(chk => {
+        chk.addEventListener("change", hideAlert);
+      });
 
-    // 타이머 (5분)
+        // 전화번호 입력 시 자동 포맷
+          const phoneInput = document.getElementById("userPhone");
+          phoneInput.addEventListener("input", function () {
+            // 숫자만 추출, 최대 11자리
+            let digits = this.value.replace(/\D/g, "").slice(0, 11);
+            let formatted = "";
+
+            if (digits.length <= 3) {
+              formatted = digits;
+            } else if (digits.length <= 7) {
+              formatted = digits.slice(0, 3) + "-" + digits.slice(3);
+            } else {
+              formatted = digits.slice(0, 3) + "-" + digits.slice(3, 7) + "-" + digits.slice(7);
+            }
+
+            this.value = formatted;
+          });
+
+    // 타이머 시작 (5분 = 300초)
     let timeLeft = 300;
+
     function updateTimer() {
       const timerEl = document.querySelector('.btn-timer');
       if (!timerEl) return;
+
       let min = Math.floor(timeLeft / 60);
       let sec = timeLeft % 60;
+
+      // "00:05:00" 형식으로 출력
       timerEl.textContent = `${String(min).padStart(2, '0')}:${String(sec).padStart(2, '0')}`;
-      if (timeLeft > 0) timeLeft--; else { clearInterval(timerInterval); timerEl.textContent = "00:00"; }
+
+      if (timeLeft > 0) {
+        timeLeft--;
+      } else {
+        clearInterval(timerInterval);
+        timerEl.textContent = "00:00";
+      }
     }
+
+    // 최초 1번 실행
     updateTimer();
-    const timerInterval = setInterval(updateTimer, 1000);
+    // 1초마다 업데이트
+    const timerInterval = setInterval(updateTimer, 1000);          
   </script>
 </body>
 
