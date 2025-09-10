@@ -231,11 +231,11 @@
             <fieldset class="mb-3">
               <legend class="form-label-title">연락가능시간</legend>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="contactTime" id="timeAM" value="오전" required />
+                <input class="form-check-input" type="radio" name="contactTime" id="CALLABLE_AM" value="CALLABLE_AM" required />
                 <label class="form-check-label" for="timeAM">오전</label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="contactTime" id="timePM" value="오후" />
+                <input class="form-check-input" type="radio" name="contactTime" id="CALLABLE_PM" value="CALLABLE_PM" />
                 <label class="form-check-label" for="timePM">오후</label>
               </div>
             </fieldset>
@@ -380,11 +380,12 @@
       const phoneFormatted = document.getElementById("userPhone").value;
       const phoneDigits = phoneFormatted.replace(/\D/g, "");
       const address = document.getElementById("userAddress").value.trim();
-      const contactTime = document.querySelector('input[name="contactTime"]:checked').value;
-      const callableCodeId = contactTime === '오전' ? 'CALLABLE_AM' : 'CALLABLE_PM';
+      const callableCodeId = document.querySelector('input[name="contactTime"]:checked').value;
+      // const callableCodeId = contactTime === '오전' ? 'CALLABLE_AM' : 'CALLABLE_PM';
       const serviceCodeIds = Array.from(checked).map(el => el.value);
 
       const payload = {
+        inquiryType: 'SERVICE',
         inquiryDatetime: nowIsoWithOffset(),
         referrerId: getReferrerId(), // URL에서 받은 referrer_id 넣기
         customerName: name,
