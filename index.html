@@ -263,6 +263,22 @@
               </div>
             </div>
 
+            <!-- 파일 업로드 -->
+            <div class="mb-3">
+              <label for="inquiryFiles" class="form-label form-label-title">사진 업로드 (최대 5개, 복수 선택 가능)</label>
+              <input type="file" class="form-control" id="inquiryFiles" name="files" multiple accept="image/*">
+              <div class="form-text">5개까지 업로드가능합니다.</div>     
+
+              <!-- ✅ 파일 목록 표시 영역 -->
+              <ul id="fileList" class="list-group mt-2"></ul>
+            </div>
+
+            <!-- 메모 -->
+            <div class="mb-3">
+              <label for="inquiryMemo" class="form-label form-label-title">메모</label>
+              <textarea class="form-control" id="inquiryMemo" name="inquiryMemo" rows="5" placeholder="추가 요청사항이나 메모를 입력하세요"></textarea>      
+            </div>
+
             <!-- 약관 내용 -->
             <div class="mb-3">
               <label class="form-label form-label-title">상담을 위한 개인정보 수집동의</label>
@@ -330,7 +346,56 @@
   <!-- 폼 제출 & API 호출 -->
   <script>
     // 개발용 API 호스트
-    const API_HOST = "https://api.haebompartners.co.kr";
+    // const API_HOST = "https://api.haebompartners.co.kr";
+    const API_HOST = "http://localhost:8000";
+    let selectedFiles = []; // 업로드용 파일 배열
+
+      // 파일 입력 이벤트
+    document.getElementById("inquiryFiles").addEventListener("change", function (e) {
+      const newFiles = Array.from(e.target.files);
+
+      // 새로 선택한 파일 + 기존 파일 합치기
+      const totalFiles = [...selectedFiles, ...newFiles];
+
+      // 최대 5개 제한
+      if (totalFiles.length > 5) {
+        alert("사진은 최대 5개까지만 업로드 가능합니다.");
+        e.target.value = ""; // 입력 초기화
+        return;
+      }
+
+      selectedFiles = totalFiles;
+      renderFileList();
+    });
+
+  // 파일 목록 렌더링
+    function renderFileList() {
+      const fileList = document.getElementById("fileList");
+      fileList.innerHTML = "";
+
+      selectedFiles.forEach((file, index) => {
+      const li = document.createElement("li");
+        li.classList.add("list-group-item", "d-flex", "align-items-center", "justify-content-between");
+   
+        li.innerHTML = `
+        <div class="d-flex align-items-center gap-2">
+          <i class="bi bi-file-earmark-image text-primary"></i>
+          <span>${file.name}</span>
+        </div>
+        <button type="button" class="btn btn-sm btn-outline-danger" onclick="removeFile(${index})">
+          <i class="bi bi-trash"></i>
+        </button>
+        `;
+
+        fileList.appendChild(li);
+      });
+    }
+
+    // 파일 삭제
+    function removeFile(index) {
+      selectedFiles.splice(index, 1);
+      renderFileList();
+    }
 
     // 오프셋 포함 ISO 문자열 (예: 2025-07-26T14:00:00+09:00)
     function nowIsoWithOffset() {
@@ -381,29 +446,39 @@
       const phoneDigits = phoneFormatted.replace(/\D/g, "");
       const address = document.getElementById("userAddress").value.trim();
       const callableCodeId = document.querySelector('input[name="contactTime"]:checked').value;
-      // const callableCodeId = contactTime === '오전' ? 'CALLABLE_AM' : 'CALLABLE_PM';
       const serviceCodeIds = Array.from(checked).map(el => el.value);
+      const inquiryMemo = document.getElementById("inquiryMemo").value.trim();
 
-      const payload = {
+      if (selectedFiles.length > 5) {
+        alert("사진은 최대 5개까지만 업로드 가능합니다.");
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append("inquiry_data", JSON.stringify({
         inquiryType: 'SERVICE',
         inquiryDatetime: nowIsoWithOffset(),
-        referrerId: getReferrerId(), // URL에서 받은 referrer_id 넣기
+        referrerId: getReferrerId(),
         customerName: name,
         customerPhoneNumber: phoneDigits,
         customerAddress: address,
         callableCodeId: callableCodeId,
-        memo: '',
+        inquiryMemo: inquiryMemo,
         serviceCodeIds: serviceCodeIds
-      };
+      }));
+
+      // ✅ 파일 추가
+      selectedFiles.forEach(file => formData.append("files", file));
 
       try {
         const res = await fetch(`${API_HOST}/api/v1/public/inquiry`, {
           method: "POST",
           headers: {
-            "Content-Type": "application/json",
+            // "Content-Type": "application/json",
             "X-Created-By": "landing"
           },
-          body: JSON.stringify(payload)
+          // body: JSON.stringify(payload)
+          body: formData
         });
         if (!res.ok) {
           const msg = await res.text();
