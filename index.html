@@ -282,22 +282,31 @@
             <!-- 약관 내용 -->
             <div class="mb-3">
               <label class="form-label form-label-title">상담을 위한 개인정보 수집동의</label>
-              <div class="terms-box">
-                <strong>📄 개인정보 수집 및 이용 동의서</strong><br><br>
-                <em>1. 수집하는 개인정보 항목</em><br>
-                이름, 연락처(휴대전화번호), 주소(선택사항), 상담내용<br><br>
-                <em>2. 수집 및 이용 목적</em><br>
-                서비스 상담 및 예약, 고객 문의 응대, 서비스 제공에 대한 안내 및 알림<br><br>
-                <em>3. 보유 및 이용 기간</em><br>
-                수집일로부터 1년간 보관 후 파기 (단, 관련 법령에 따라 보관이 필요한 경우 해당 기간 동안 보관)<br><br>
-                <em>4. 동의 거부 권리 및 불이익 안내</em><br>
-                개인정보 제공을 거부할 권리가 있으나, 이 경우 상담 및 서비스 제공이 제한될 수 있습니다.<br>
+            
+              <!-- 제목 버튼 -->
+              <button class="btn btn-outline-secondary w-100 text-start" type="button" data-bs-toggle="collapse"
+                data-bs-target="#termsContent" aria-expanded="false" aria-controls="termsContent">
+                📄 내용 보기
+              </button>
+            
+              <!-- Collapse 내용 -->
+              <div class="collapse mt-2" id="termsContent">
+                <div class="terms-box">
+                  <em>1. 수집하는 개인정보 항목</em><br>
+                  이름, 연락처(휴대전화번호), 주소(선택사항), 상담내용<br><br>
+                  <em>2. 수집 및 이용 목적</em><br>
+                  서비스 상담 및 예약, 고객 문의 응대, 서비스 제공에 대한 안내 및 알림<br><br>
+                  <em>3. 보유 및 이용 기간</em><br>
+                  수집일로부터 1년간 보관 후 파기 (단, 관련 법령에 따라 보관이 필요한 경우 해당 기간 동안 보관)<br><br>
+                  <em>4. 동의 거부 권리 및 불이익 안내</em><br>
+                  개인정보 제공을 거부할 권리가 있으나, 이 경우 상담 및 서비스 제공이 제한될 수 있습니다.<br>
+                </div>
               </div>
-              <div class="form-check">
+            
+              <div class="form-check mt-2">
                 <input class="form-check-input" type="checkbox" id="agreeTerms" required checked />
                 <label class="form-check-label" for="agreeTerms">약관에 동의합니다.</label>
-              </div>
-            </div>
+              </div>      </div>
           </div>
 
           <div class="modal-footer p-0">
@@ -539,6 +548,10 @@
         const bsModal = bootstrap.Modal.getInstance(document.getElementById("inquiryModal"));
         bsModal.hide();
         this.reset();
+        // 첨부 파일 초기화
+        selectedFiles = [];
+        document.getElementById("inquiryFiles").value = "";
+        document.getElementById("fileList").innerHTML = "";
       } catch (err) {
         console.error(err);
         alert("접수 중 오류가 발생했습니다.");
