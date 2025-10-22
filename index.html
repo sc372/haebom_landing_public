@@ -351,8 +351,9 @@
     let selectedFiles = []; // 업로드용 파일 배열
 
       // 파일 입력 이벤트
-    document.getElementById("inquiryFiles").addEventListener("change", function (e) {
+    document.getElementById("inquiryFiles").addEventListener("change", async function (e) {
       const newFiles = Array.from(e.target.files);
+      const compressedFiles = [];
 
       // 새로 선택한 파일 + 기존 파일 합치기
       const totalFiles = [...selectedFiles, ...newFiles];
@@ -364,9 +365,58 @@
         return;
       }
 
-      selectedFiles = totalFiles;
+      for (const file of newFiles) {
+        if (!file.type.startsWith("image/")) {
+          alert(`이미지 파일만 첨부 가능합니다.`);
+          continue;
+        }
+
+        // 파일 하나씩 용량 체크
+        if (file.size > 50 * 1024 * 1024) { // 50MB
+          alert(`"${file.name}" 파일은 50MB를 초과하여 업로드할 수 없습니다.`);
+          continue; // 이 파일은 무시
+        }
+
+        // 이미지 압축
+        const compressed = await compressImage(file, 0.5); // 0.5 = 50% 품질
+        compressedFiles.push(compressed);
+      }
+
+      selectedFiles = [...selectedFiles, ...compressedFiles];
       renderFileList();
     });
+
+    // 이미지 압축 함수
+    async function compressImage(file, quality = 0.5) {
+      return new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onload = function (event) {
+          const img = new Image();
+          img.onload = function () {
+            const canvas = document.createElement("canvas");
+
+            // 원본 비율 유지
+            const maxWidth = 1024; // 최대 너비
+            const scale = Math.min(maxWidth / img.width, 1);
+            canvas.width = img.width * scale;
+            canvas.height = img.height * scale;
+
+            const ctx = canvas.getContext("2d");
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+            canvas.toBlob(
+              (blob) => {
+                resolve(new File([blob], file.name, { type: "image/jpeg" }));
+              },
+              "image/jpeg",
+              quality
+            );
+          };
+          img.src = event.target.result;
+        };
+        reader.readAsDataURL(file);
+      });
+    }
 
   // 파일 목록 렌더링
     function renderFileList() {
