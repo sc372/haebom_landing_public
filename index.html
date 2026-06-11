@@ -2,594 +2,760 @@
 <html lang="ko">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>청소해봄</title>
-  <!-- 파비콘 -->
-  <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico?">
-  <!-- Bootstrap 5 CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-    crossorigin="anonymous" />
-  <!-- Bootstrap Icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      margin-bottom: 70px;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>에어컨 수리 점검 전문업체 냉방불량 누수 소음 출장서비스</title>
 
-    .slides {
-      margin: 0;
-      padding: 0;
-    }
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
-    .image-slide {
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-    }
+    <meta name="description"
+        content="에어컨 수리 및 점검 전문업체입니다. 냉방불량, 누수, 소음, 전원 불량, 난방불량 등 다양한 에어컨 문제를 전문기사가 신속하게 방문 점검하고 수리해드립니다.">
 
-    .image-slide img {
-      display: block;
-      margin: 0;
-      padding: 0;
-      max-width: 100%;
-      max-height: 100%;
-      width: auto;
-      height: auto;
-      object-fit: contain;
-    }
+    <meta name="keywords" content="서울에어컨수리, 경기에어컨수리, 에어컨수리, 에어컨점검, 에어컨출장수리, 시스템에어컨수리, 에어컨누수, 냉방불량, 실외기수리, 에어컨AS">
 
-    .form-label-title {
-      font-size: 1.25rem;
-      font-weight: 700;
-    }
+    <meta name="robots" content="index,follow">
 
-    .terms-box {
-      max-height: 150px;
-      overflow-y: auto;
-      border: 1px solid #ddd;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      background: #f9f9f9;
-      font-size: 0.9rem;
-      line-height: 1.5;
-    }
+    <link rel="canonical" href="https://www.haebompartners.co.kr/">
 
-    @media (max-width: 576px) {
-      .image-slide img {
-        width: 100%;
-        height: auto;
-      }
-    }
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="서울 경기 에어컨 수리 점검 전문업체 냉방불량 누수 출장수리">
+    <meta property="og:description" content="냉방불량, 누수, 소음, 전원 불량, 실외기 고장 등 다양한 에어컨 문제를 전문기사가 신속하게 방문 점검 및 수리해드립니다.">
+    <meta property="og:url" content="https://www.haebompartners.co.kr/">
+    <meta property="og:site_name" content="청소해봄">
+    <meta property="og:image" content="https://www.haebompartners.co.kr/images/og-image.png">
+    <meta property="og:locale" content="ko_KR">
 
-    .navbar.fixed-bottom {
-      background-color: transparent !important;
-      box-shadow: none;
-    }
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="서울 경기 에어컨 수리 점검 전문업체 냉방불량 누수 출장수리">
+    <meta name="twitter:description" content="에어컨 냉방불량, 누수, 소음, 전원 불량, 실외기 고장 등 다양한 문제를 전문기사가 빠르게 해결해드립니다.">
+    <meta name="twitter:image" content="https://www.haebompartners.co.kr/images/og-image.png">
 
-    .btn-wrap {
-      background-color: #ef4d4d;
-      color: #ffffff;
-      height: 80px;
-    }
+    <!-- 기타 -->
+    <meta name="author" content="청소해봄">
+    <meta name="theme-color" content="#145ce6">
+    <meta name="format-detection" content="telephone=yes">
 
-    .btn-inquiry-wrap {
-      height: 60px;
-      cursor: pointer;
-    }
-
-    .btn-sub-label {
-      font-size: clamp(1rem, 4vw, 1.6rem);
-      font-weight: 300;
-    }
-
-    .btn-timer {
-      font-size: clamp(1.6rem, 4vw, 1.8rem);
-      font-weight: 700;
-    }
-
-    .btn-main-label {
-      font-weight: 500;
-      font-size: clamp(1.2rem, 4vw, 1.6rem);
-    }
-
-    .btn-card {
-      background-color: #ffffff;
-      color: #333333;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .btn-card .bi {
-      font-size: clamp(1.2rem, 4vw, 1.6rem);
-    }
-
-    .modal-content {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .modal-dialog-scrollable .modal-body {
-      overflow-y: auto;
-      max-height: calc(100vh - 2rem - 56px - 56px);
-    }
-
-    .modal-footer {
-      position: sticky;
-      bottom: 0;
-      background: #fff;
-      z-index: 10;
-    }
-
-    .site-footer {
-      margin-bottom: 100px;
-      padding: 1rem 0 0.5rem;
-      color: #666;
-      line-height: 1.5;
-    }
-
-    .site-footer .footer-title {
-      font-weight: 700;
-      font-size: 1rem;
-      color: #333;
-    }
-
-    .site-footer .footer-text {
-      font-size: 0.85rem;
-    }
-
-    .site-footer .copyright {
-      color: #999;
-      margin-top: 0.5rem;
-    }
-  </style>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </head>
 
 <body>
 
-  <!-- 이미지 슬라이드 리스트 -->
-  <div class="container-fluid slides p-0 m-0">
-    <div class="image-slide"><img src="images/1.gif" alt="Design 1" /></div>
-    <div class="image-slide"><img src="images/2.png" alt="Design 2" /></div>
-    <div class="image-slide"><img src="images/3.gif" alt="Design 3" /></div>
-    <div class="image-slide"><img src="images/4.gif" alt="Design 4" /></div>
-    <div class="image-slide"><img src="images/5.gif" alt="Design 5" /></div>
-    <div class="image-slide"><img src="images/6.png" alt="Design 6" /></div>
-    <div class="image-slide"><img src="images/7.jpg" alt="Design 7" /></div>
-    <div class="image-slide"><img src="images/8.gif" alt="Design 8" /></div>
-    <div class="image-slide"><img src="images/9.jpg" alt="Design 9" /></div>
-    <div class="image-slide"><img src="images/10.png" alt="Design 10" /></div>
-    <div class="image-slide"><img src="images/11.png" alt="Design 11" /></div>
-    <div class="image-slide"><img src="images/12.png" alt="Design 12" /></div>
-    <div class="image-slide"><img src="images/13.jpg" alt="Design 13" /></div>
-    <div class="image-slide"><img src="images/14.jpg" alt="Design 14" /></div>
-    <div class="image-slide"><img src="images/15.jpg" alt="Design 15" /></div>
-    <div class="image-slide"><img src="images/16.png" alt="Design 16" /></div>
-    <div class="image-slide"><img src="images/17.png" alt="Design 17" /></div>
-  </div>
+    <div class="acrepair-page">
 
-  <nav class="navbar fixed-bottom bg-light d-flex align-items-center justify-content-center" style="height: 70px;">
-    <div class="w-100" style="max-width: 860px;">
-      <div class="d-flex gap-2 align-items-center h-100">
-        <div class="btn-wrap rounded w-100 h-100 d-flex align-items-center justify-content-center"
-          style="height: 90px;">
-          <div class="btn-inquiry-wrap d-flex align-items-center gap-2 flex-wrap" data-bs-toggle="modal"
-            data-bs-target="#inquiryModal">
-            <span class="btn-sub-label">특별할인마감</span>
-            <span class="btn-timer"></span>
-            <div class="btn-card px-2 py-1 rounded d-flex align-items-center">
-              <span class="btn-main-label">상담신청</span>
-              <i class="bi bi-file-earmark-text-fill"></i>
-            </div>
-          </div>
-          <a href="tel:01027474112"
-            class="btn btn-success d-flex align-items-center justify-content-center rounded-circle"
-            style="width: 48px; height: 48px; margin-left: 10px;">
-            <i class="bi bi-telephone-fill"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </nav>
+        <!-- 01. 플로팅 현황바 -->
+        <div class="acrepair-status-bar">
+            <div class="acrepair-container acrepair-status-inner">
 
-  <!-- Modal -->
-  <div class="modal fade" id="inquiryModal" tabindex="-1" aria-labelledby="inquiryModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content">
-        <form id="inquiryForm">
-          <div class="modal-header">
-            <h5 class="modal-title" id="inquiryModalLabel">서비스 문의</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="닫기"></button>
-          </div>
-          <div class="modal-body">
-            <!-- 성함 -->
-            <div class="mb-3">
-              <label for="userName" class="form-label form-label-title">성함</label>
-              <input type="text" class="form-control" id="userName" name="userName" required />
-            </div>
-
-            <!-- 연락처 -->
-            <div class="mb-3">
-              <label for="userPhone" class="form-label form-label-title">연락처</label>
-              <input type="tel" class="form-control" id="userPhone" name="userPhone" placeholder="010-1234-5678"
-                required pattern="\d{3}-\d{4}-\d{4}" maxlength="13" inputmode="numeric" />
-            </div>
-
-            <!-- 주소 -->
-            <div class="mb-3">
-              <label for="userAddress" class="form-label form-label-title">지역</label>
-              <input type="text" class="form-control" id="userAddress" name="userAddress" placeholder="지역를 입력하세요"
-                required />
-            </div>
-
-            <!-- 연락 가능 시간 -->
-            <fieldset class="mb-3">
-              <legend class="form-label-title">연락가능시간</legend>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="contactTime" id="CALLABLE_AM" value="CALLABLE_AM" required />
-                <label class="form-check-label" for="timeAM">오전</label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="contactTime" id="CALLABLE_PM" value="CALLABLE_PM" />
-                <label class="form-check-label" for="timePM">오후</label>
-              </div>
-            </fieldset>
-
-            <!-- 서비스 (code_id로 value 설정) -->
-            <div class="mb-3">
-              <label class="form-label form-label-title">서비스</label>
-              <label class="form-check-label">(복수선택 가능)</label>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="svc1" name="services" value="AC_CLEAN" />
-                <label class="form-check-label" for="svc1">에어컨 청소</label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="svc2" name="services" value="AC_CHARGE" />
-                <label class="form-check-label" for="svc2">에어컨 가스충전</label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="svc3" name="services" value="DISH_CLEAN" />
-                <label class="form-check-label" for="svc3">세탁기 청소</label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="svc4" name="services"
-                  value="AIR_FRESHER_CLAEN" />
-                <label class="form-check-label" for="svc4">공기청정기 청소</label>
-              </div>
-            </div>
-
-            <!-- 파일 업로드 -->
-            <div class="mb-3">
-              <label for="inquiryFiles" class="form-label form-label-title">사진 업로드 (최대 5개, 복수 선택 가능)</label>
-              <input type="file" class="form-control" id="inquiryFiles" name="files" multiple accept="image/*">
-              <div class="form-text">5개까지 업로드가능합니다.</div>     
-
-              <!-- ✅ 파일 목록 표시 영역 -->
-              <ul id="fileList" class="list-group mt-2"></ul>
-            </div>
-
-            <!-- 메모 -->
-            <div class="mb-3">
-              <label for="inquiryMemo" class="form-label form-label-title">메모</label>
-              <textarea class="form-control" id="inquiryMemo" name="inquiryMemo" rows="5" placeholder="추가 요청사항이나 메모를 입력하세요"></textarea>      
-            </div>
-
-            <!-- 약관 내용 -->
-            <div class="mb-3">
-              <label class="form-label form-label-title">상담을 위한 개인정보 수집동의</label>
-            
-              <!-- 제목 버튼 -->
-              <button class="btn btn-outline-secondary w-100 text-start" type="button" data-bs-toggle="collapse"
-                data-bs-target="#termsContent" aria-expanded="false" aria-controls="termsContent">
-                📄 내용 보기
-              </button>
-            
-              <!-- Collapse 내용 -->
-              <div class="collapse mt-2" id="termsContent">
-                <div class="terms-box">
-                  <em>1. 수집하는 개인정보 항목</em><br>
-                  이름, 연락처(휴대전화번호), 주소(선택사항), 상담내용<br><br>
-                  <em>2. 수집 및 이용 목적</em><br>
-                  서비스 상담 및 예약, 고객 문의 응대, 서비스 제공에 대한 안내 및 알림<br><br>
-                  <em>3. 보유 및 이용 기간</em><br>
-                  수집일로부터 1년간 보관 후 파기 (단, 관련 법령에 따라 보관이 필요한 경우 해당 기간 동안 보관)<br><br>
-                  <em>4. 동의 거부 권리 및 불이익 안내</em><br>
-                  개인정보 제공을 거부할 권리가 있으나, 이 경우 상담 및 서비스 제공이 제한될 수 있습니다.<br>
+                <div class="acrepair-status-item">
+                    <i>
+                        <img src="./images/profile-user.svg" alt="">
+                    </i>
+                    <span>오늘의 접수</span>
+                    <strong>47건</strong>
                 </div>
-              </div>
-            
-              <div class="form-check mt-2">
-                <input class="form-check-input" type="checkbox" id="agreeTerms" required checked />
-                <label class="form-check-label" for="agreeTerms">약관에 동의합니다.</label>
-              </div>      </div>
-          </div>
 
-          <div class="modal-footer p-0">
-            <div id="formAlert" class="alert alert-danger alert-dismissible fade d-none w-100" role="alert">
-              <span id="formAlertMsg"></span>
-              <button type="button" class="btn-close" aria-label="Close" onclick="hideAlert()"></button>
+                <div class="acrepair-status-divider"></div>
+
+                <div class="acrepair-status-item">
+                    <i>
+                        <img src="./images/chatting.svg" alt="">
+                    </i>
+                    <span>현재 상담대기</span>
+                    <strong>3건</strong>
+                </div>
+
             </div>
-            <button type="submit" class="btn btn-primary w-100">상담 접수</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <!-- Footer -->
-  <footer class="site-footer text-center">
-    <div class="container">
-      <p class="footer-title mb-1">청소해봄 부천점</p>
-      <p class="footer-text mb-1">
-        경기도 부천시 중동로254번길 64 402호(중동, 신일아르디세) 60
-      </p>
-      
-      <p class="footer-text mb-1">
-        사업자등록번호 226-16-63802
-      </p>
-      <p class="footer-text mb-1">상담전화, 문자접수 010-2747-4112</p>
-      <p class="copyright mb-0">&copy;haebom All Rights Reserved.</p>
-    </div>
-  </footer>
-
-  <!-- Bootstrap JS Bundle -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-    crossorigin="anonymous"></script>
-
-  <script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
-  <script type="text/javascript">
-    if (!wcs_add) var wcs_add = {};
-    wcs_add["wa"] = "148dbe2a9e49e10";
-    if (window.wcs) {
-      wcs_do();
-    }
-  </script>    
-
-  <!-- 폼 제출 & API 호출 -->
-  <script>
-    // 개발용 API 호스트
-    const API_HOST = "https://api.haebompartners.co.kr";
-    // const API_HOST = "http://localhost:8000";
-    let selectedFiles = []; // 업로드용 파일 배열
-
-      // 파일 입력 이벤트
-    document.getElementById("inquiryFiles").addEventListener("change", async function (e) {
-      const newFiles = Array.from(e.target.files);
-      const compressedFiles = [];
-
-      // 새로 선택한 파일 + 기존 파일 합치기
-      const totalFiles = [...selectedFiles, ...newFiles];
-
-      // 최대 5개 제한
-      if (totalFiles.length > 5) {
-        alert("사진은 최대 5개까지만 업로드 가능합니다.");
-        e.target.value = ""; // 입력 초기화
-        return;
-      }
-
-      for (const file of newFiles) {
-        if (!file.type.startsWith("image/")) {
-          alert(`이미지 파일만 첨부 가능합니다.`);
-          continue;
-        }
-
-        // 파일 하나씩 용량 체크
-        if (file.size > 50 * 1024 * 1024) { // 50MB
-          alert(`"${file.name}" 파일은 50MB를 초과하여 업로드할 수 없습니다.`);
-          continue; // 이 파일은 무시
-        }
-
-        // 이미지 압축
-        const compressed = await compressImage(file, 0.5); // 0.5 = 50% 품질
-        compressedFiles.push(compressed);
-      }
-
-      selectedFiles = [...selectedFiles, ...compressedFiles];
-      renderFileList();
-    });
-
-    // 이미지 압축 함수
-    async function compressImage(file, quality = 0.5) {
-      return new Promise((resolve) => {
-        const reader = new FileReader();
-        reader.onload = function (event) {
-          const img = new Image();
-          img.onload = function () {
-            const canvas = document.createElement("canvas");
-
-            // 원본 비율 유지
-            const maxWidth = 1024; // 최대 너비
-            const scale = Math.min(maxWidth / img.width, 1);
-            canvas.width = img.width * scale;
-            canvas.height = img.height * scale;
-
-            const ctx = canvas.getContext("2d");
-            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-
-            canvas.toBlob(
-              (blob) => {
-                resolve(new File([blob], file.name, { type: "image/jpeg" }));
-              },
-              "image/jpeg",
-              quality
-            );
-          };
-          img.src = event.target.result;
-        };
-        reader.readAsDataURL(file);
-      });
-    }
-
-  // 파일 목록 렌더링
-    function renderFileList() {
-      const fileList = document.getElementById("fileList");
-      fileList.innerHTML = "";
-
-      selectedFiles.forEach((file, index) => {
-      const li = document.createElement("li");
-        li.classList.add("list-group-item", "d-flex", "align-items-center", "justify-content-between");
-   
-        li.innerHTML = `
-        <div class="d-flex align-items-center gap-2">
-          <i class="bi bi-file-earmark-image text-primary"></i>
-          <span>${file.name}</span>
         </div>
-        <button type="button" class="btn btn-sm btn-outline-danger" onclick="removeFile(${index})">
-          <i class="bi bi-trash"></i>
-        </button>
-        `;
 
-        fileList.appendChild(li);
-      });
-    }
+        <!-- 02. 히어로 -->
+        <section class="acrepair-hero-section">
+            <div class="acrepair-container">
 
-    // 파일 삭제
-    function removeFile(index) {
-      selectedFiles.splice(index, 1);
-      renderFileList();
-    }
+                <div class="acrepair-hero-wrap">
 
-    // 오프셋 포함 ISO 문자열 (예: 2025-07-26T14:00:00+09:00)
-    function nowIsoWithOffset() {
-      const d = new Date();
-      const tz = -d.getTimezoneOffset(); // minutes
-      const sign = tz >= 0 ? '+' : '-';
-      const hh = String(Math.floor(Math.abs(tz) / 60)).padStart(2, '0');
-      const mm = String(Math.abs(tz) % 60).padStart(2, '0');
-      const local = new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 19);
-      return `${local}${sign}${hh}:${mm}`;
-    }
+                    <div class="acrepair-hero-content">
 
-    // URL 쿼리에서 referrerId 추출 (?ref=XXXX)
-    function getReferrerId() {
-      const url = new URL(window.location.href);
-      return url.searchParams.get('ref') || '';
-    }
-
-    // Alert 숨기기
-    function hideAlert() {
-      const alertEl = document.getElementById("formAlert");
-      alertEl.classList.add("d-none");
-      alertEl.classList.remove("show");
-    }
-
-    // URL 쿼리에서 referrer_id 추출 (?referrer_id=XXXX)
-    function getReferrerId() {
-      const url = new URL(window.location.href);
-      return url.searchParams.get('referrer_id') || '';
-    }
+                        <h1 class="acrepair-hero-title">
+                            에어컨이 <br class="mobile-br"> <span class="acrepair-typing" id="cooling-word"></span>하신가요?
+                            <br>
+                            <span class="acrepair-point-color">지금 바로 <br class="mobile-br">
+                                <span class="acrepair-typing" id="service-word"></span>을 신청하세요!</span>
+                        </h1>
 
 
-    document.getElementById("inquiryForm").addEventListener("submit", async function (e) {
-      e.preventDefault();
-      hideAlert();
+                        <p class="acrepair-hero-desc">
+                            냉방안됨 · 난방안됨 · 가스충전 · 누수 · 에러코드<br>
+                            25년 경력 LG AS기사 출신 베테랑 운영하는 전문 수리팀!
+                        </p>
 
-      const checked = document.querySelectorAll('input[name="services"]:checked');
-      if (checked.length === 0) {
-        const alertEl = document.getElementById("formAlert");
-        document.getElementById("formAlertMsg").textContent = "서비스를 하나 이상 선택해 주세요.";
-        alertEl.classList.remove("d-none");
-        alertEl.classList.add("show");
-        return;
-      }
+                        <div class="acrepair-brand-list">
 
-      const name = document.getElementById("userName").value.trim();
-      const phoneFormatted = document.getElementById("userPhone").value;
-      const phoneDigits = phoneFormatted.replace(/\D/g, "");
-      const address = document.getElementById("userAddress").value.trim();
-      const callableCodeId = document.querySelector('input[name="contactTime"]:checked').value;
-      const serviceCodeIds = Array.from(checked).map(el => el.value);
-      const inquiryMemo = document.getElementById("inquiryMemo").value.trim();
+                            <img src="./images/logo-lg.png" alt="LG">
 
-      if (selectedFiles.length > 5) {
-        alert("사진은 최대 5개까지만 업로드 가능합니다.");
-        return;
-      }
 
-      const formData = new FormData();
-      formData.append("inquiry_data", JSON.stringify({
-        inquiryType: 'SERVICE',
-        inquiryDatetime: nowIsoWithOffset(),
-        referrerId: getReferrerId(),
-        customerName: name,
-        customerPhoneNumber: phoneDigits,
-        customerAddress: address,
-        callableCodeId: callableCodeId,
-        inquiryMemo: inquiryMemo,
-        serviceCodeIds: serviceCodeIds
-      }));
+                            <img src="./images/Certificate-photo.png" alt="자격증">
 
-      // ✅ 파일 추가
-      selectedFiles.forEach(file => formData.append("files", file));
+                        </div>
 
-      try {
-        const res = await fetch(`${API_HOST}/api/v1/public/inquiry`, {
-          method: "POST",
-          headers: {
-            // "Content-Type": "application/json",
-            "X-Created-By": "landing"
-          },
-          // body: JSON.stringify(payload)
-          body: formData
-        });
-        if (!res.ok) {
-          const msg = await res.text();
-          throw new Error(msg || "네트워크 오류");
-        }
+                        <div class="acrepair-brand-list2">
 
-        alert("접수가 완료되었습니다! 감사합니다.");
-        const bsModal = bootstrap.Modal.getInstance(document.getElementById("inquiryModal"));
-        bsModal.hide();
-        this.reset();
-        // 첨부 파일 초기화
-        selectedFiles = [];
-        document.getElementById("inquiryFiles").value = "";
-        document.getElementById("fileList").innerHTML = "";
-      } catch (err) {
-        console.error(err);
-        alert("접수 중 오류가 발생했습니다.");
-      }
-    });
+                            <ul>
+                                <li>
 
-    // 체크박스 변경 시 Alert 숨기기
-    const serviceCheckboxes = document.querySelectorAll('input[name="services"]');
-    serviceCheckboxes.forEach(chk => {
-      chk.addEventListener("change", hideAlert);
-    });
+                                    시스템에어컨 멀티 다배관 시공자격보유
+                                </li>
+                                <li>
 
-    // 전화번호 입력 시 자동 포맷
-    const phoneInput = document.getElementById("userPhone");
-    phoneInput.addEventListener("input", function () {
-      let digits = this.value.replace(/\D/g, "").slice(0, 11);
-      let formatted = "";
-      if (digits.length <= 3) {
-        formatted = digits;
-      } else if (digits.length <= 7) {
-        formatted = digits.slice(0, 3) + "-" + digits.slice(3);
-      } else {
-        formatted = digits.slice(0, 3) + "-" + digits.slice(3, 7) + "-" + digits.slice(7);
-      }
-      this.value = formatted;
-    });
+                                    시스템에어컨 가스누설 수리전문
+                                </li>
+                                <li>
 
-    // 타이머 (5분)
-    let timeLeft = 300;
-    function updateTimer() {
-      const timerEl = document.querySelector('.btn-timer');
-      if (!timerEl) return;
-      let min = Math.floor(timeLeft / 60);
-      let sec = timeLeft % 60;
-      timerEl.textContent = `${String(min).padStart(2, '0')}:${String(sec).padStart(2, '0')}`;
-      if (timeLeft > 0) timeLeft--; else { clearInterval(timerInterval); timerEl.textContent = "00:00"; }
-    }
-    updateTimer();
-    const timerInterval = setInterval(updateTimer, 1000);
-  </script>
+                                    국내브랜드 냉, 난방에어컨 수리전문
+                                </li>
+                            </ul>
+
+                            <img src="./images/logo-samsung.png" alt="삼성">
+
+                            <img src="./images/logo-carrier.png" alt="캐리어">
+
+                        </div>
+
+                        <div class="acrepair-hero-btns">
+
+                            <a href="javascript:void(0);" class="acrepair-btn-primary js-scroll-consult">
+
+                                <img src="./images/account-follow.svg" alt="">
+                                <span>30초 수리 상담신청</span>
+
+                            </a>
+
+                            <a href="tel:01000000000" class="acrepair-btn-secondary">
+
+                                <img src="./images/telephone.svg" alt="">
+                                <span>전화 상담하기</span>
+
+                            </a>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- 03. 실시간 접수현황 -->
+        <section class="acrepair-live-section">
+
+            <div class="acrepair-container">
+
+                <div class="acrepair-live-wrap">
+
+                    <div class="acrepair-live-header">
+                        <h2>실시간 접수현황</h2>
+                        <span>최근 접수 내역</span>
+                    </div>
+
+                    <div class="acrepair-live-box">
+                        <div class="acrepair-live-track"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- 04. 증상 -->
+        <section class="acrepair-symptom-section">
+
+            <div class="acrepair-container">
+
+                <div class="acrepair-symptom-header">
+                    <h2>현재 이떤 증상으로<br>불편함을 겪고 계신가요?</h2>
+                </div>
+
+                <div class="acrepair-symptom-grid">
+
+                    <div class="acrepair-symptom-card">
+                        <div class="acrepair-symptom-number">
+                            <img src="./images/icon-checkmark.svg" alt="">
+                        </div>
+                        <div class="acrepair-symptom-icon">
+                            <img src="./images/icon-air-conditioner-5557951.png" alt="">
+                        </div>
+
+                        <div class="acrepair-symptom-title">
+                            찬바람 안 나옴
+                        </div>
+                    </div>
+
+                    <div class="acrepair-symptom-card">
+                        <div class="acrepair-symptom-number">
+                            <img src="./images/icon-checkmark.svg" alt="">
+                        </div>
+
+                        <div class="acrepair-symptom-icon">
+                            <img src="./images/icon-water-drop-3614590.png" alt="">
+                        </div>
+
+                        <div class="acrepair-symptom-title">
+                            물 떨어짐 (누수)
+                        </div>
+                    </div>
+
+                    <div class="acrepair-symptom-card">
+                        <div class="acrepair-symptom-number">
+                            <img src="./images/icon-checkmark.svg" alt="">
+                        </div>
+
+                        <div class="acrepair-symptom-icon">
+                            <img src="./images/heat-wave-1275973.png" alt="">
+                        </div>
+
+                        <div class="acrepair-symptom-title">
+                            뜨거운 바람 안나옴
+                        </div>
+                    </div>
+
+                    <div class="acrepair-symptom-card">
+                        <div class="acrepair-symptom-number">
+                            <img src="./images/icon-checkmark.svg" alt="">
+                        </div>
+
+                        <div class="acrepair-symptom-icon">
+                            <img src="./images/icon-mode-3653239.png" alt="">
+                        </div>
+
+                        <div class="acrepair-symptom-title">
+                            에러코드 발생
+                        </div>
+                    </div>
+
+                    <div class="acrepair-symptom-card">
+                        <div class="acrepair-symptom-number">
+                            <img src="./images/icon-checkmark.svg" alt="">
+                        </div>
+
+                        <div class="acrepair-symptom-icon">
+                            <img src="./images/icon-power-button-11010367.png" alt="">
+                        </div>
+
+                        <div class="acrepair-symptom-title">
+                            전원이 안 켜짐
+                        </div>
+                    </div>
+
+                    <div class="acrepair-symptom-card">
+                        <div class="acrepair-symptom-number">
+                            <img src="./images/icon-checkmark.svg" alt="">
+                        </div>
+
+                        <div class="acrepair-symptom-icon">
+                            <img src="./images/icon-air-conditioner-1275973.png" alt="">
+                        </div>
+
+                        <div class="acrepair-symptom-title">
+                            비정상 소음발생
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- 05. 고객착각 -->
+        <section class="acrepair-mistake-section">
+            <div class="acrepair-container">
+
+                <div class="acrepair-mistake-header">
+                    <h2>
+                        많은 분들이<br>
+                        이렇게 생각하십니다
+                    </h2>
+                </div>
+
+                <div class="acrepair-mistake-wrap">
+
+                    <div class="acrepair-mistake-image">
+                        <img src="./images/Images-12538432.png" alt="">
+                    </div>
+
+                    <div class="acrepair-chat-wrap">
+                        <div class="acrepair-chat-item" data-aos="fade-left">
+                            <div class="acrepair-chat-bubble">가스만 넣으면 되겠지...</div>
+                        </div>
+
+                        <div class="acrepair-chat-item" data-aos="fade-left" data-aos-delay="400">
+                            <div class="acrepair-chat-bubble">청소하면 해결 될 줄 알았는데...</div>
+                        </div>
+
+                        <div class="acrepair-chat-item" data-aos="fade-left" data-aos-delay="800">
+                            <div class="acrepair-chat-bubble">실외기만 돌아가면 괜찮겠지...</div>
+                        </div>
+
+                        <div class="acrepair-chat-item" data-aos="fade-left" data-aos-delay="1200">
+                            <div class="acrepair-chat-bubble">그냥 오래돼서 그런가보다...</div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- 06. 실제사례 -->
+        <section class="acrepair-case-section">
+
+            <div class="acrepair-container">
+
+                <div class="acrepair-case-stamp" data-aos="zoom-in">
+                    <img src="./images/stemp-img.png" alt="">
+                </div>
+
+                <div class="acrepair-case-header">
+                    <h2>
+                        네이버쇼핑 에어컨유지보수 1등<br>
+                        업체가 운영하는 전문수리팀!
+                    </h2>
+
+                    <p>
+                        정확한 진단이 비용과 시간을 아껴드립니다.
+                    </p>
+                </div>
+
+                <div class="acrepair-case-line"></div>
+
+                <h3 class="acrepair-case-title">
+                    소형 사업장 부터 대형 건물까지 <br>
+                    수리 불가능한 현장은 없습니다.
+                </h3>
+
+                <div class="acrepair-case-content">
+
+                    <div class="acrepair-case-left">
+                        <div class="swiper acrepair-case-swiper">
+                            <div class="swiper-wrapper">
+
+                                <div class="swiper-slide">
+                                    <div class="acrepair-case-card">
+                                        <img src="./images/case01.png" alt="">
+                                        <div class="acrepair-case-badge">대학교 연구실</div>
+                                    </div>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <div class="acrepair-case-card">
+                                        <img src="./images/case02.jpg" alt="">
+                                        <div class="acrepair-case-badge">병의원</div>
+                                    </div>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <div class="acrepair-case-card">
+                                        <img src="./images/case03.png" alt="">
+                                        <div class="acrepair-case-badge">관공서·기관</div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="acrepair-case-card">
+                                        <img src="./images/case04.jpg" alt="">
+                                        <div class="acrepair-case-badge">학원</div>
+                                    </div>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <div class="acrepair-case-card">
+                                        <img src="./images/case05.png" alt="">
+                                        <div class="acrepair-case-badge">음식점</div>
+                                    </div>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <div class="acrepair-case-card">
+                                        <img src="./images/case06.png" alt="">
+                                        <div class="acrepair-case-badge">대형 사무실</div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="acrepair-case-right">
+                        <img src="./images/case-side.png" alt="">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- 07. 리뷰 -->
+        <section class="acrepair-review-section">
+            <div class="acrepair-review-visual">
+                <div class="review-grid">
+                    <img src="./images/review09.jpg" alt="">
+                    <img src="./images/review02.jpg" alt="">
+                    <img src="./images/review03.jpg" alt="">
+                    <img src="./images/review04.jpg" alt="">
+                    <img src="./images/review05.jpg" alt="">
+                    <img src="./images/review06.jpg" alt="">
+                    <img src="./images/review10.jpg" alt="">
+                    <img src="./images/review12.jpg" alt="">
+                    <img src="./images/review01.jpg" alt="">
+                </div>
+
+                <div class="review-visual-text">
+                    <h2>🏆 약 <strong class="count-up" data-target="10000">0</strong>건 이상! 🏆</h2>
+                    <p>연간 에어컨 유지보수 처리건수</p>
+                </div>
+            </div>
+
+            <div class="acrepair-review-content">
+                <div class="review-title">
+                    <div class="stars">★★★★★</div>
+                    <h3>유지보수 1등 업체의 실제 리뷰실적!</h3>
+                </div>
+
+                <div class="acrepair-phone-review">
+                    <div class="acrepair-phone-frame">
+                        <img src="./images/phone-frame.png" alt="휴대폰 프레임">
+
+                        <div class="acrepair-phone-screen">
+                            <img src="./images/review.gif" alt="리뷰 GIF">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- 08. 서비스범위 -->
+        <section class="acrepair-service-section">
+            <div class="acrepair-service-bg"></div>
+
+            <div class="acrepair-container">
+                <div class="service-title-box">
+                    <h2>해결 가능한 에어컨수리 범위안내</h2>
+                    <p>에어컨 본체부터 실외기까지, 주요 고장 범위를<br>전문 엔지니어가 정확하게 점검하고 수리합니다.</p>
+                </div>
+
+                <div class="service-scope-wrap">
+
+                    <!-- 에어컨 본체 -->
+                    <div class="service-row service-row-air">
+                        <div class="service-device">
+                            <div class="circle circle-1"></div>
+                            <div class="circle circle-2"></div>
+                            <div class="circle circle-3"></div>
+                            <img src="./images/service-aircon.png" alt="에어컨">
+                        </div>
+
+                        <div class="service-dots">
+                            <span></span><span></span><span></span>
+                        </div>
+
+                        <div class="service-code-list air-code" data-aos="fade-left">
+
+                            <div class="service-code-item">
+                                <i class="service-icon icon01"></i>
+                                <span>냉방안됨</span>
+                            </div>
+
+                            <div class="service-code-item">
+                                <i class="service-icon icon02"></i>
+                                <span>누수</span>
+                            </div>
+
+                            <div class="service-code-item">
+                                <i class="service-icon icon03"></i>
+                                <span>기판(PCB)</span>
+                            </div>
+
+                            <div class="service-code-item">
+                                <i class="service-icon icon04"></i>
+                                <span>센서 불량</span>
+                            </div>
+
+                            <div class="service-code-item">
+                                <i class="service-icon icon05"></i>
+                                <span>통신 오류</span>
+                            </div>
+
+                            <div class="service-code-item">
+                                <i class="service-icon icon06"></i>
+                                <span>전원 불량</span>
+                            </div>
+
+                            <div class="service-code-item">
+                                <i class="service-icon icon07"></i>
+                                <span>에러코드</span>
+                            </div>
+
+                            <div class="service-code-item">
+                                <i class="service-icon icon08"></i>
+                                <span>소음 문제</span>
+                            </div>
+
+                            <div class="service-code-item">
+                                <i class="service-icon icon09"></i>
+                                <span>기타 고장</span>
+                            </div>
+
+                        </div>
+
+                        <!-- 실외기 -->
+
+                        <div class="service-code-list outdoor-code" data-aos="fade-right">
+
+                            <div class="service-code-item">
+                                <i class="service-icon icon10"></i>
+                                <span>난방안됨</span>
+                            </div>
+
+                            <div class="service-code-item">
+                                <i class="service-icon icon11"></i>
+                                <span>인버터 이상</span>
+                            </div>
+
+                            <div class="service-code-item">
+                                <i class="service-icon icon12"></i>
+                                <span>가스 누설</span>
+                            </div>
+
+                        </div>
+
+                        <div class="service-dots">
+                            <span></span><span></span><span></span>
+                        </div>
+
+                        <div class="service-device">
+                            <div class="circle circle-1"></div>
+                            <div class="circle circle-2"></div>
+                            <div class="circle circle-3"></div>
+                            <img src="./images/service-outdoor.png" alt="실외기">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 09. 진행절차 -->
+        <section class="acrepair-process-section">
+            <div class="acrepair-container">
+                <div class="process-title-box">
+                    <span>PROCESS</span>
+                    <h2>접수부터 수리까지 원스톱 빠른 진행</h2>
+                    <p>복잡한 절차 없이 접수 후 일정 확인, 방문 점검, 현장 수리까지 빠르게 진행됩니다.</p>
+                </div>
+
+                <div class="process-list">
+                    <div class="process-item">
+                        <em>01</em>
+                        <strong>수리 접수</strong>
+                        <p>증상과 주소를 확인합니다.</p>
+                    </div>
+
+                    <div class="process-item">
+                        <em>02</em>
+                        <strong>일정 확인</strong>
+                        <p>방문 가능한 시간을 조율합니다.</p>
+                    </div>
+
+                    <div class="process-item">
+                        <em>03</em>
+                        <strong>현장 진단</strong>
+                        <p>전문 엔지니어가 원인을 점검합니다.</p>
+                    </div>
+
+                    <div class="process-item">
+                        <em>04</em>
+                        <strong>방문 견적 안내</strong>
+                        <p>수리 전 비용을 안내드립니다.</p>
+                    </div>
+
+                    <div class="process-item">
+                        <em>05</em>
+                        <strong>현장 점검 및 수리</strong>
+                        <p>확인 후 신속하게 수리합니다.</p>
+                    </div>
+                </div>
+
+                <div class="process-notice">
+                    <img src="./images/kakao-talk-2111466.svg" alt="카카오톡">
+                    <span>접수되면 실시간 알림톡으로 발송됩니다.</span>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- 10. FAQ -->
+        <section class="acrepair-faq-section">
+            <div class="acrepair-container">
+                <div class="faq-title-box">
+                    <span>FAQ</span>
+                    <h2>자주 묻는 질문</h2>
+                    <p>에어컨 수리 전 많이 궁금해하시는 내용을 정리했습니다.</p>
+                </div>
+
+                <div class="faq-list">
+                    <div class="faq-item is-active">
+                        <button type="button" class="faq-question">
+                            <span>출장비가 있나요?</span>
+                            <em></em>
+                        </button>
+                        <div class="faq-answer">
+                            <div>
+                                네. 기본적으로 전문엔지니어 방문 시 기본 경비가 발생 되어 출장비가 발생합니다.
+                                자세한 내용은 상담으로 안내드립니다.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button type="button" class="faq-question">
+                            <span>당일 방문이 가능한가요?</span>
+                            <em></em>
+                        </button>
+                        <div class="faq-answer">
+                            <div>
+                                담당 전문엔지니어와 협의에 따라 당일 방문이 가능합니다.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button type="button" class="faq-question">
+                            <span>가스충전만 하면 해결되나요?</span>
+                            <em></em>
+                        </button>
+                        <div class="faq-answer">
+                            <div>
+                                기본적으로 가스충전 사유가 발생되면 여러가지 증상이 복합적으로 나타나기 시작합니다.
+                                2차 비용이 발생 되지 않게 정밀 진단 후 가스충전을 진행합니다.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button type="button" class="faq-question">
+                            <span>모든 브랜드 수리가 가능한가요?</span>
+                            <em></em>
+                        </button>
+                        <div class="faq-answer">
+                            <div>
+                                국내 대표 3사 삼성, 엘지, 캐리어를 주력으로 하고 해외브랜드 및 중소브랜드는
+                                별도 문의 주시면 상담 가능합니다.
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 11. 긴급 CTA -->
+        <section id="consult-form" class="acrepair-emergency-section">
+            <div class="acrepair-container">
+                <div class="emergency-box">
+                    <div class="emergency-copy">
+                        <span>30초 수리 상담 신청</span>
+                        <h2>
+                            지금은 괜찮아 보여도<br>
+                            고장은 더 심해질 수 있습니다!
+                        </h2>
+                        <p>
+                            냉방안됨 · 난방안됨 · 가스충전 · 누수 · 에러코드<br>
+                            빠른 진단이 비용을 줄이는 첫 걸음입니다.
+                        </p>
+                    </div>
+
+                    <form class="emergency-form">
+                        <div class="form-row">
+                            <input type="text" placeholder="이름">
+                            <input type="tel" placeholder="연락처">
+                        </div>
+
+                        <div class="form-row">
+                            <select>
+                                <option value="">지역 선택</option>
+                                <option>서울</option>
+                                <option>경기</option>
+                                <option>인천</option>
+                                <option>기타 지역</option>
+                            </select>
+
+                            <select>
+                                <option value="">증상 선택</option>
+                                <option>냉방안됨</option>
+                                <option>누수</option>
+                                <option>난방안됨</option>
+                                <option>가스충전</option>
+                                <option>에러코드</option>
+                                <option>소음 문제</option>
+                                <option>기타 고장</option>
+                            </select>
+                        </div>
+
+                        <button type="submit">무료 상담신청하기</button>
+
+                        <label class="agree-check">
+                            <input type="checkbox">
+                            <span>개인정보 수집 및 이용에 동의합니다.
+                                <a href="privacy.html" target="_blank" rel="noopener noreferrer">
+                                    [보기]
+                                </a>
+                            </span>
+                        </label>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- 12. 하단 고정 버튼 -->
+        <div class="acrepair-bottom-fixed">
+            <div class="acrepair-bottom-inner">
+                <a href="javascript:void(0);" class="acrepair-bottom-btn acrepair-bottom-btn-primary js-scroll-consult">
+                    30초 수리 상담 신청
+                </a>
+
+                <a href="tel:010-0000-0000" class="acrepair-bottom-btn acrepair-bottom-btn-call">
+                    전화 상담하기
+                </a>
+            </div>
+        </div>
+
+        <a href="tel:01000000000" class="acrepair-floating-call">
+            <img src="./images/telephone.svg" alt="">
+        </a>
+    </div>
+
 </body>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script src="main.js"></script>
 
 </html>

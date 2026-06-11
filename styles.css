@@ -1,0 +1,2208 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Noto Sans KR", sans-serif;
+    color: #111;
+    background: #f3f6fa;
+    padding-bottom: 88px;
+}
+
+.acrepair-page {
+    width: 100%;
+    background: #fff;
+}
+
+.acrepair-container {
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.acrepair-point-color {
+    color: #145ce6;
+}
+
+/* 공통 섹션 */
+.acrepair-live-section,
+.acrepair-symptom-section,
+.acrepair-mistake-section,
+.acrepair-case-section,
+.acrepair-review-section,
+.acrepair-service-section,
+.acrepair-process-section,
+.acrepair-faq-section,
+.acrepair-emergency-section {
+    padding: 80px 24px;
+}
+
+/* 플로팅 현황바 */
+.acrepair-status-bar {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    width: 100%;
+    background: #D97706;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.acrepair-status-inner {
+    height: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFF7ED;
+}
+
+.acrepair-status-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.acrepair-status-item i {
+    font-style: normal;
+    display: flex;
+    align-items: center;
+}
+
+.acrepair-status-item i img {
+    width: 28px;
+    display: block;
+}
+
+.acrepair-status-item strong {
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 800;
+    margin-left: 10px;
+}
+
+.acrepair-status-divider {
+    width: 1px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.18);
+    margin: 0 35px;
+}
+
+/* 히어로 */
+.acrepair-hero-section {
+    padding: 0 24px 0px;
+}
+
+.acrepair-hero-section .acrepair-container {
+    position: relative;
+    overflow: hidden;
+    min-height: 520px;
+    padding: 80px 0;
+    background-image:
+        linear-gradient(90deg,
+            rgba(255, 255, 255, 0.98) 0%,
+            rgba(255, 255, 255, 0.92) 42%,
+            rgba(255, 255, 255, 0.55) 62%,
+            rgba(255, 255, 255, 0.12) 100%),
+        url("./images/acrepair-hero-bg.png");
+    background-size: cover;
+    background-position: center right;
+    background-repeat: no-repeat;
+}
+
+.acrepair-hero-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+}
+
+.acrepair-hero-content {
+    flex: 1;
+    padding: 0 24px;
+}
+
+.acrepair-hero-title {
+    font-size: 34px;
+    line-height: 1.3;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: #111;
+}
+
+.acrepair-hero-desc {
+    margin-top: 28px;
+    font-size: 16px;
+    line-height: 1.8;
+    color: #222;
+}
+
+.acrepair-hero-logo {
+    flex-shrink: 0;
+}
+
+.acrepair-hero-logo img {
+    width: 180px;
+    display: block;
+    margin-top: -35px;
+}
+
+.acrepair-brand-list {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    margin-top: 70px;
+}
+
+.acrepair-brand-list img {
+    height: 64px;
+    width: auto;
+}
+
+
+.acrepair-brand-list2 ul {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    margin: 0 0 28px;
+    padding: 0;
+
+    list-style: none;
+}
+
+.acrepair-brand-list2 ul li {
+    position: relative;
+
+    padding-left: 22px;
+
+    color: #333;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.acrepair-brand-list2 ul li::before {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    top: 50%;
+
+    width: 16px;
+    height: 16px;
+
+    transform: translateY(-50%);
+
+    background: url("./images/icon-checkmark.svg") center / contain no-repeat;
+}
+
+.acrepair-brand-list2 {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    margin-top: 25px;
+}
+
+.acrepair-brand-list2 img {
+    height: 38px;
+    width: auto;
+}
+
+
+@media (max-width: 768px) {
+
+    .acrepair-brand-list2 {
+        gap: 13px;
+    }
+
+    .acrepair-brand-list2 ul {
+        gap: 10px;
+        margin-bottom: 24px;
+    }
+
+    .acrepair-brand-list2 ul li {
+        padding-left: 15px;
+        padding-right: 2px;
+
+        font-size: 14px;
+        line-height: 1.45;
+    }
+
+    .acrepair-brand-list2 ul li::before {
+
+        width: 12px;
+        height: 12px;
+
+    }
+
+    .acrepair-brand-list2 img {
+        height: 18px;
+    }
+
+    .acrepair-brand-list2 ul li {
+        background: linear-gradient(to right,
+                rgba(255, 255, 255, 0) 0%,
+                #ffffff94 100%);
+    }
+
+}
+
+.acrepair-brand-title {
+    margin-top: 30px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #111;
+}
+
+.acrepair-hero-btns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-top: 50px;
+}
+
+.acrepair-btn-primary,
+.acrepair-btn-secondary {
+    height: 64px;
+    border-radius: 8px;
+    background: #ffffffab;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    text-decoration: none;
+    color: #111;
+    font-size: 18px;
+    font-weight: 600;
+
+    border: 0.5px solid #4783f6;
+
+    box-shadow: 0 4px 12px rgba(65, 131, 237, 0.25);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        background .25s ease;
+}
+
+.acrepair-btn-primary:hover,
+.acrepair-btn-secondary:hover {
+    transform: translateY(-4px);
+
+    background: #fff;
+
+    box-shadow:
+        0 10px 24px rgba(65, 131, 237, 0.28);
+}
+
+.acrepair-btn-primary:active,
+.acrepair-btn-secondary:active {
+    transform: translateY(-1px);
+}
+
+.acrepair-btn-primary img,
+.acrepair-btn-secondary img {
+    width: 30px;
+    display: block;
+}
+
+.acrepair-section-placeholder {
+    min-height: 200px;
+    border-radius: 20px;
+    background: #f6f8fb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+/* 하단 고정 */
+.acrepair-bottom-fixed {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    background: #fff;
+    border-top: 1px solid #ddd;
+    padding: 12px 16px;
+}
+
+.acrepair-bottom-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    gap: 10px;
+}
+
+.acrepair-bottom-btn {
+    flex: 1;
+    height: 54px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.acrepair-bottom-btn-primary {
+    background: linear-gradient(135deg,
+            #00bbff 0%,
+            #0036ff 100%);
+
+    color: #fff;
+}
+
+.acrepair-bottom-btn-call {
+    background: #222;
+    color: #fff;
+}
+
+
+@media (max-width:768px) {
+
+    .acrepair-live-section,
+    .acrepair-symptom-section,
+    .acrepair-mistake-section,
+    .acrepair-case-section,
+    .acrepair-review-section,
+    .acrepair-service-section,
+    .acrepair-process-section,
+    .acrepair-faq-section,
+    .acrepair-emergency-section {
+        padding: 60px 28px;
+    }
+
+    .acrepair-hero-section {
+        padding: 0;
+    }
+
+    .acrepair-hero-section .acrepair-container {
+        min-height: 520px;
+        padding: 48px 16px;
+        background-image:
+            linear-gradient(180deg,
+                rgba(255, 255, 255, 0.98) 0%,
+                rgba(255, 255, 255, 0.4) 60%,
+                rgba(255, 255, 255, 0.2) 100%),
+            url("./images/acrepair-hero-bg.png");
+        background-position: right bottom -20px;
+        background-size: cover;
+    }
+
+    .acrepair-hero-wrap {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+    }
+
+    .acrepair-hero-content {
+        width: 100%;
+        padding: 0;
+    }
+
+    .acrepair-hero-logo {
+        order: -1;
+        width: 100%;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .acrepair-hero-logo img {
+        width: 180px;
+        margin-top: 0;
+    }
+
+    .acrepair-brand-list {
+        gap: 28px;
+        margin-top: 54px;
+    }
+
+    .acrepair-hero-btns {
+        width: 100%;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-top: 36px;
+    }
+
+    .acrepair-btn-primary,
+    .acrepair-btn-secondary {
+        height: 58px;
+        font-size: 15px;
+        border-radius: 8px;
+    }
+
+    .acrepair-btn-primary img,
+    .acrepair-btn-secondary img {
+        width: 20px;
+    }
+}
+
+.acrepair-live-section {
+    padding: 0px;
+}
+
+.acrepair-live-wrap {
+    overflow: hidden;
+    background: #fff;
+}
+
+.acrepair-live-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.acrepair-live-header h2 {
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.acrepair-live-header span {
+    font-size: 13px;
+    color: #666;
+}
+
+.acrepair-live-box {
+    height: 280px;
+    overflow: hidden;
+}
+
+.acrepair-live-item {
+    height: 56px;
+    padding: 0 20px;
+
+    display: grid;
+    grid-template-columns: 80px 80px 1fr auto;
+    align-items: center;
+
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.acrepair-live-name {
+    font-size: 13px;
+    color: #999;
+}
+
+.acrepair-live-area {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.acrepair-live-service {
+    font-size: 14px;
+}
+
+.acrepair-live-status {
+    font-size: 12px;
+    font-weight: 700;
+    color: #4183ED;
+}
+
+.acrepair-live-box {
+    height: 280px;
+    overflow: hidden;
+}
+
+.acrepair-live-item {
+    height: 56px;
+}
+
+.acrepair-live-status {
+    min-width: 64px;
+    padding: 6px 8px;
+    border-radius: 999px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.status-received {
+    background: #eaf2ff;
+    color: #4183ED;
+}
+
+.status-consulting {
+    background: #fff4d8;
+    color: #d89400;
+}
+
+.status-done {
+    background: #e8f8ee;
+    color: #13994a;
+}
+
+.status-visit {
+    background: #f0ecff;
+    color: #6b4de6;
+}
+
+@media (max-width:768px) {
+    .acrepair-live-header {
+        padding: 20px 28px;
+    }
+
+    .acrepair-live-item {
+        padding: 0px 28px
+    }
+}
+
+.info-us {
+    font-weight: 300;
+    margin-left: 10px;
+    color: #145ce6;
+    font-size: 0.9em;
+    background-color: #ffffff85;
+}
+
+.mobile-br {
+    display: none;
+}
+
+@media (max-width:768px) {
+    .mobile-br {
+        display: block;
+    }
+}
+
+
+
+/* 04 증상 */
+.acrepair-symptom-section {
+    padding: 80px 24px;
+}
+
+.acrepair-symptom-header {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.acrepair-symptom-header h2 {
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1.4;
+}
+
+.acrepair-symptom-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.acrepair-symptom-card {
+    position: relative;
+    overflow: visible;
+
+
+    border: 1px solid #dbe7ff;
+    border-radius: 20px;
+
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, .04),
+        0 10px 20px rgba(20, 92, 230, .08);
+
+}
+
+/* 01 찬바람 안 나옴 */
+.acrepair-symptom-card:nth-child(1) {
+    background-image: url('./images/symptom-01.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* 02 누수 */
+.acrepair-symptom-card:nth-child(2) {
+    background-image: url('./images/symptom-02.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* 03 실외기 고장 */
+.acrepair-symptom-card:nth-child(3) {
+    background-image: url('./images/symptom-03.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* 04 에러코드 */
+.acrepair-symptom-card:nth-child(4) {
+    background-image: url('./images/symptom-04.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* 05 전원불량 */
+.acrepair-symptom-card:nth-child(5) {
+    background-image: url('./images/symptom-05.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* 06 소음발생 */
+.acrepair-symptom-card:nth-child(6) {
+    background-image: url('./images/symptom-06.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.acrepair-symptom-number {
+    position: absolute;
+
+    top: -15px;
+    left: -12px;
+
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #145ce6;
+    color: #fff;
+
+    border-radius: 50%;
+    border: 3px solid #fff;
+
+    font-size: 13px;
+    font-weight: 800;
+    line-height: 1;
+
+    box-shadow:
+        0 4px 12px rgba(20, 92, 230, .25);
+
+    background: linear-gradient(135deg,
+            #145ce6 0%,
+            #4183ed 100%);
+
+    z-index: 10;
+}
+
+.acrepair-symptom-icon {
+    height: 120px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding-top: 18px;
+}
+
+.acrepair-symptom-icon img {
+    width: 64px;
+    height: 64px;
+    filter: brightness(0) invert(1);
+    opacity: .7;
+}
+
+.acrepair-symptom-title {
+    background: #145ce6;
+    color: #fff;
+
+    text-align: center;
+
+    padding: 14px 10px;
+
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+@media (max-width:768px) {
+
+    .acrepair-symptom-section {
+        padding: 60px 28px;
+    }
+
+    .acrepair-symptom-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+    }
+
+    .acrepair-symptom-header h2 {
+        font-size: 24px;
+    }
+
+    .acrepair-symptom-icon {
+        height: 90px;
+    }
+
+    .acrepair-symptom-icon img {
+        width: 52px;
+        height: 52px;
+    }
+
+    .acrepair-symptom-title {
+        font-size: 13px;
+        padding: 12px 8px;
+    }
+
+    .acrepair-symptom-number {
+        width: 34px;
+        height: 34px;
+
+        top: -10px;
+        left: -10px;
+
+        font-size: 11px;
+        border-width: 2px;
+    }
+}
+
+.acrepair-symptom-number img {
+    width: 18px;
+    height: 18px;
+    display: block;
+    filter: brightness(0) invert(1);
+}
+
+
+/* 05 고객착각 */
+.acrepair-mistake-section {
+    padding: 80px 24px 0px;
+    background: #f4f8ff;
+}
+
+.acrepair-mistake-header {
+    text-align: left;
+    margin-bottom: 42px;
+}
+
+.acrepair-mistake-header h2 {
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1.4;
+    letter-spacing: -0.04em;
+}
+
+.acrepair-mistake-wrap {
+    position: relative;
+    min-height: 420px;
+}
+
+.acrepair-mistake-image {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 58%;
+    display: flex;
+    justify-content: flex-end;
+    z-index: 1;
+}
+
+.acrepair-mistake-image img {
+    width: 100%;
+    max-width: 360px;
+    display: block;
+}
+
+.acrepair-chat-wrap {
+    position: relative;
+    z-index: 2;
+    width: 68%;
+    padding-top: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+}
+
+.acrepair-chat-item {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.acrepair-chat-bubble {
+    position: relative;
+    overflow: visible;
+
+    padding: 15px 18px;
+
+    background: #fff;
+    color: #111;
+
+    border: 1px solid #e8edf5;
+    border-radius: 20px;
+
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.55;
+
+    box-shadow: 0 4px 14px rgba(0, 0, 0, .08);
+}
+
+.acrepair-chat-bubble::after {
+    content: "";
+    position: absolute;
+
+    right: -20px;
+    bottom: 4px;
+
+    width: 32px;
+    height: 20px;
+
+    background: #fff;
+
+    clip-path: polygon(0 0, 100% 100%, 0 100%);
+
+    filter: drop-shadow(1px 1px 0 #e8edf5) drop-shadow(0 4px 4px rgba(0, 0, 0, .04));
+}
+
+@media (max-width:768px) {
+    .acrepair-mistake-section {
+        padding: 60px 20px 0px;
+    }
+
+    .acrepair-mistake-header {
+        margin-bottom: 32px;
+    }
+
+    .acrepair-mistake-header h2 {
+        font-size: 24px;
+    }
+
+    .acrepair-mistake-wrap {
+        min-height: 420px;
+    }
+
+    .acrepair-mistake-image {
+        width: 72%;
+        right: -12px;
+    }
+
+    .acrepair-chat-wrap {
+        width: 78%;
+        gap: 14px;
+        padding-top: 10px;
+    }
+
+    .acrepair-chat-bubble {
+        padding: 13px 15px;
+        font-size: 14px;
+    }
+}
+
+
+/* 06 실제사례 */
+.acrepair-case-section {
+    padding: 80px 24px;
+    background: #fff;
+}
+
+.acrepair-case-stamp {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.acrepair-case-stamp img {
+    width: 140px;
+    animation: stampPop 1.85s ease-out infinite;
+}
+
+.acrepair-case-header {
+    text-align: center;
+}
+
+.acrepair-case-header h2 {
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 1.45;
+}
+
+.acrepair-case-header p {
+    margin-top: 24px;
+    font-size: 22px;
+    font-weight: 500;
+    color: #555;
+}
+
+.acrepair-case-line {
+    width: 2px;
+    height: 100px;
+    margin: 50px auto;
+    background: linear-gradient(to bottom,
+            rgba(20, 92, 230, 0) 0%,
+            rgba(20, 92, 230, .25) 30%,
+            rgba(20, 92, 230, .6) 70%,
+            #145ce6 100%);
+}
+
+.acrepair-case-title {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+
+.acrepair-case-content {
+    display: grid;
+    grid-template-columns: 8fr 2fr;
+    gap: 6px;
+    align-items: center;
+}
+
+.acrepair-case-left {
+    width: 100%;
+    min-width: 0;
+}
+
+.acrepair-case-swiper {
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+}
+
+.acrepair-case-swiper .swiper-wrapper,
+.acrepair-case-swiper .swiper-slide {
+    height: 100%;
+}
+
+.acrepair-case-card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 280px;
+    border-radius: 12px;
+    background: #d9d9d9;
+    overflow: hidden;
+}
+
+.acrepair-case-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.acrepair-case-badge {
+    position: absolute;
+    left: 50%;
+    bottom: 20px;
+    z-index: 10;
+    transform: translateX(-50%);
+    padding: 12px 28px;
+    background: #145ce6;
+    color: #fff;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 700;
+    white-space: nowrap;
+    box-shadow: 0 10px 24px rgba(20, 92, 230, .25);
+}
+
+.acrepair-case-right {
+    width: 100%;
+}
+
+.acrepair-case-right img {
+    width: 100%;
+    display: block;
+}
+
+@media (max-width:768px) {
+    .acrepair-case-section {
+        padding: 60px 20px;
+    }
+
+    .acrepair-case-stamp img {
+        width: 110px;
+    }
+
+    .acrepair-case-header h2 {
+        font-size: 26px;
+    }
+
+    .acrepair-case-header p {
+        font-size: 16px;
+    }
+
+    .acrepair-case-line {
+        height: 64px;
+        margin: 38px auto;
+    }
+
+    .acrepair-case-content {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .acrepair-case-swiper {
+        height: 240px;
+    }
+
+    .acrepair-case-card {
+        min-height: 240px;
+    }
+
+    .acrepair-case-right img {
+        width: auto;
+        height: 200px;
+        margin: 0 auto;
+    }
+
+    .acrepair-case-badge {
+        bottom: 16px;
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
+
+@keyframes stampPop {
+    0% {
+        opacity: 0;
+        transform: scale(2) rotate(-12deg);
+    }
+
+    40% {
+        opacity: 1;
+        transform: scale(.9) rotate(3deg);
+    }
+
+    60% {
+        transform: scale(1) rotate(0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0);
+    }
+}
+
+
+.acrepair-case-swiper .swiper-slide {
+    transition:
+        transform .4s ease,
+        opacity .4s ease,
+        filter .4s ease;
+
+    transform: scale(.85);
+    filter: grayscale(1);
+    opacity: .55;
+}
+
+.acrepair-case-swiper .swiper-slide-active {
+    transform: scale(1);
+    filter: grayscale(0);
+    opacity: 1;
+}
+
+
+
+/* 07 리뷰 */
+.acrepair-review-section {
+    overflow: hidden;
+}
+
+.acrepair-review-visual {
+    position: relative;
+    overflow: hidden;
+    background: #111;
+    margin: 0 auto;
+    max-width: 720px;
+}
+
+.review-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    height: 100%;
+}
+
+.review-grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.acrepair-review-visual::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 45%;
+    background: linear-gradient(to bottom,
+            rgba(20, 92, 230, 0) 0%,
+            rgba(20, 92, 230, 0.25) 35%,
+            rgba(12, 43, 108, 0.92) 100%);
+}
+
+.review-visual-text {
+    position: absolute;
+    left: 50%;
+    bottom: 58px;
+    transform: translateX(-50%);
+    z-index: 2;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+}
+
+.review-visual-text h2 {
+    margin: 0;
+    font-size: 34px;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+}
+
+.review-visual-text h2 strong {
+    font-size: 42px;
+}
+
+.review-visual-text p {
+    margin-top: 12px;
+    font-size: 15px;
+    opacity: 0.9;
+}
+
+.acrepair-review-content {
+    padding: 64px 20px 80px;
+    background: #f4f8ff;
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.review-title {
+    text-align: center;
+    margin-bottom: 34px;
+    color: #555;
+}
+
+.review-title .stars {
+    font-size: 22px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.review-title h3 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+}
+
+.review-card {
+    max-width: 620px;
+    margin: 0 auto;
+    background: #fff;
+    border: 1px solid #e8edf5;
+    padding: 34px;
+    box-shadow:
+        0 2px 8px rgba(20, 92, 230, 0.04),
+        0 8px 24px rgba(20, 92, 230, 0.04);
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.review-name {
+    padding-bottom: 16px;
+    border-bottom: 1px solid #d3d8e0;
+    font-size: 15px;
+    color: #777;
+}
+
+.review-text {
+    margin: 24px 0;
+    font-size: 17px;
+    line-height: 1.75;
+    color: #555;
+    word-break: keep-all;
+}
+
+.review-images {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+}
+
+.review-images img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+.review-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    font-size: 16px;
+    font-weight: 700;
+    color: #145ce6;
+
+    text-decoration: none;
+    transition: .2s;
+    margin-top: 10px;
+}
+
+.review-link span {
+    transition: .2s;
+}
+
+.review-link:hover {
+    opacity: .8;
+}
+
+.review-link:hover span {
+    transform: translateX(4px);
+}
+
+@media (max-width: 768px) {
+    .acrepair-review-section {
+        padding: 0;
+    }
+
+    .review-visual-text h2 {
+        font-size: 24px;
+    }
+
+    .review-visual-text h2 strong {
+        font-size: 32px;
+    }
+
+    .review-title h3 {
+        font-size: 22px;
+    }
+
+    .review-card {
+        padding: 24px;
+    }
+
+    .review-text {
+        font-size: 15px;
+    }
+}
+
+.acrepair-phone-review {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.acrepair-phone-frame {
+    position: relative;
+    max-width: 450px;
+}
+
+.acrepair-phone-frame>img {
+    width: 100%;
+    display: block;
+    position: relative;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.acrepair-phone-screen {
+    position: absolute;
+
+    top: 3.7%;
+    left: 7.5%;
+
+    width: 85%;
+    height: 93%;
+
+    overflow: hidden;
+    border-radius: 32px;
+
+    z-index: 1;
+}
+
+.acrepair-phone-screen img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    display: block;
+}
+
+@media (max-width: 768px) {
+
+    .acrepair-phone-frame {
+        width: 350px;
+    }
+
+    .acrepair-phone-screen {
+        border-radius: 24px;
+    }
+}
+
+
+
+/* 08 서비스범위 */
+.acrepair-service-section {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg,
+            #f8fafc 0%,
+            #eef2f7 100%);
+}
+
+.acrepair-service-bg {
+    position: absolute;
+    inset: 0;
+    opacity: .35;
+    background-image:
+        linear-gradient(rgba(148, 163, 184, .14) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148, 163, 184, .14) 1px, transparent 1px);
+    background-size: 42px 42px;
+}
+
+.acrepair-service-section .acrepair-container {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.service-title-box {
+    text-align: center;
+    margin-bottom: 64px;
+}
+
+.service-title-box h2 {
+    margin: 0;
+    font-size: 28px;
+    line-height: 1.25;
+    font-weight: 900;
+    letter-spacing: -0.06em;
+    color: #111827;
+}
+
+.service-title-box p {
+    margin: 18px auto 0;
+    max-width: 560px;
+    font-size: 17px;
+    line-height: 1.65;
+    color: #475569;
+    word-break: keep-all;
+}
+
+.service-scope-wrap {
+    position: relative;
+}
+
+.service-row {
+    display: grid;
+    grid-template-columns: 300px 54px 1fr;
+    align-items: center;
+    gap: 18px;
+}
+
+.service-row+.service-row {
+    margin-top: 76px;
+}
+
+.service-row-outdoor {
+    grid-template-columns: 1fr 54px 280px;
+}
+
+.service-device {
+    position: relative;
+    min-height: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.service-device img {
+    position: relative;
+    z-index: 2;
+    display: block;
+    max-width: 100%;
+    height: auto;
+    filter: drop-shadow(0 18px 28px rgba(15, 23, 42, .12));
+}
+
+.service-row-air .service-device img {
+    width: 300px;
+}
+
+.service-row-outdoor .service-device img {
+    width: 250px;
+}
+
+.circle {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(20, 92, 230, .12);
+}
+
+.circle-1 {
+    width: 300px;
+    opacity: .32;
+}
+
+.circle-2 {
+    width: 220px;
+    opacity: .42;
+}
+
+.circle-3 {
+    width: 140px;
+    opacity: .6;
+}
+
+.service-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+}
+
+.service-dots::before,
+.service-dots::after {
+    content: "";
+    width: 13px;
+    height: 1px;
+    background: rgba(20, 92, 230, .35);
+}
+
+.service-dots span {
+    display: block;
+    width: 5px;
+    height: 16px;
+    border-radius: 999px;
+    background: #145ce6;
+}
+
+.service-dots span:nth-child(1) {
+    opacity: .35;
+}
+
+.service-dots span:nth-child(2) {
+    opacity: .65;
+}
+
+.service-dots span:nth-child(3) {
+    opacity: 1;
+}
+
+.service-code-list {
+    display: grid;
+    gap: 22px 18px;
+}
+
+.air-code {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.outdoor-code {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.service-code-item {
+    text-align: center;
+    min-width: 0;
+}
+
+.service-code-item img {
+    display: block;
+    width: 54px;
+    height: 54px;
+    object-fit: contain;
+    margin: 0 auto 10px;
+}
+
+.service-code-item span {
+    display: block;
+    font-size: 15px;
+    font-weight: 600;
+    color: #111827;
+    letter-spacing: -0.04em;
+    white-space: nowrap;
+}
+
+@media (max-width: 720px) {
+    .acrepair-service-section {
+        padding: 64px 16px 76px;
+    }
+
+    .service-title-box {
+        margin-bottom: 44px;
+    }
+
+    .service-title-box h2 {
+        font-size: 30px;
+    }
+
+    .service-title-box p {
+        font-size: 15px;
+    }
+
+    .service-row,
+    .service-row-outdoor {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .service-row-outdoor {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .service-dots {
+        display: none;
+    }
+
+    .service-row+.service-row {
+        margin-top: 64px;
+    }
+
+    .service-device {
+        min-height: 210px;
+    }
+
+    .service-row-air .service-device img {
+        width: min(340px, 82vw);
+    }
+
+    .service-row-outdoor .service-device img {
+        width: min(280px, 72vw);
+    }
+
+    .circle-1 {
+        width: min(340px, 82vw);
+    }
+
+    .circle-2 {
+        width: min(250px, 62vw);
+    }
+
+    .circle-3 {
+        width: min(160px, 42vw);
+    }
+
+    .air-code,
+    .outdoor-code {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px 10px;
+    }
+
+    .service-code-item img {
+        width: 48px;
+        height: 48px;
+    }
+
+    .service-code-item span {
+        font-size: 14px;
+    }
+}
+
+
+.service-icon {
+    display: block;
+    width: 58px;
+    height: 58px;
+    margin: 0 auto 10px;
+
+    position: relative;
+    border-radius: 50%;
+    background: #fff;
+
+    box-shadow:
+        0 4px 12px rgba(15, 23, 42, .04),
+        0 8px 24px rgba(20, 92, 230, .05);
+
+    overflow: hidden;
+}
+
+.service-icon::before {
+    content: "";
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 58px;
+    height: 58px;
+
+    background-image: url("./images/icon-sprite.png");
+    background-repeat: no-repeat;
+    background-size: 348px 116px;
+
+    transform: translate(-50%, -50%) scale(.68);
+    transform-origin: center;
+}
+
+.icon01::before {
+    background-position: 0px 0px;
+}
+
+.icon02::before {
+    background-position: -58px 0px;
+}
+
+.icon03::before {
+    background-position: -116px 0px;
+}
+
+.icon04::before {
+    background-position: -174px 0px;
+}
+
+.icon05::before {
+    background-position: -232px 0px;
+}
+
+.icon06::before {
+    background-position: -290px 0px;
+}
+
+.icon07::before {
+    background-position: 0px -58px;
+}
+
+.icon08::before {
+    background-position: -58px -58px;
+}
+
+.icon09::before {
+    background-position: -116px -58px;
+}
+
+.icon10::before {
+    background-position: -174px -58px;
+}
+
+.icon11::before {
+    background-position: -232px -58px;
+}
+
+.icon12::before {
+    background-position: -290px -58px;
+}
+
+
+
+/* 09 진행절차 */
+.acrepair-process-section {
+    padding: 90px 20px;
+    background: #fff;
+}
+
+.acrepair-process-section .acrepair-container {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.process-title-box {
+    text-align: center;
+    margin-bottom: 42px;
+}
+
+.process-title-box span {
+    display: inline-block;
+    margin-bottom: 12px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .12em;
+    color: #145ce6;
+}
+
+.process-title-box h2 {
+    margin: 0;
+    font-size: 34px;
+    line-height: 1.3;
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    color: #111827;
+}
+
+.process-title-box p {
+    margin: 16px auto 0;
+    max-width: 560px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #64748b;
+    word-break: keep-all;
+}
+
+.process-list {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    background: #f8fafc;
+    border: 1px solid rgba(20, 92, 230, .1);
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.process-item {
+    position: relative;
+    padding: 24px 12px;
+    text-align: center;
+}
+
+.process-item+.process-item::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 24px;
+    bottom: 24px;
+    width: 1px;
+    background: rgba(20, 92, 230, .1);
+}
+
+.process-item em {
+    display: block;
+    margin-bottom: 8px;
+    font-style: normal;
+    font-size: 13px;
+    font-weight: 900;
+    color: #145ce6;
+}
+
+.process-item strong {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: 900;
+    color: #111827;
+    letter-spacing: -0.04em;
+}
+
+.process-item p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #64748b;
+    word-break: keep-all;
+}
+
+.process-notice {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 28px;
+    font-size: 17px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.process-notice img {
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+}
+
+@media (max-width: 720px) {
+    .acrepair-process-section {
+        padding: 70px 16px;
+    }
+
+    .process-title-box h2 {
+        font-size: 28px;
+    }
+
+    .process-list {
+        grid-template-columns: 1fr;
+        border-radius: 16px;
+    }
+
+    .process-item {
+        padding: 20px;
+        text-align: left;
+    }
+
+    .process-item+.process-item::before {
+        left: 20px;
+        right: 20px;
+        top: 0;
+        bottom: auto;
+        width: auto;
+        height: 1px;
+    }
+
+    .process-notice {
+        font-size: 15px;
+        text-align: left;
+    }
+}
+
+
+
+/* 10 FAQ  */
+.acrepair-faq-section {
+    padding: 90px 20px;
+    background: #fff;
+}
+
+.acrepair-faq-section .acrepair-container {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.faq-title-box {
+    text-align: center;
+    margin-bottom: 42px;
+}
+
+.faq-title-box span {
+    display: inline-block;
+    margin-bottom: 12px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .12em;
+    color: #145ce6;
+}
+
+.faq-title-box h2 {
+    margin: 0;
+    font-size: 34px;
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    color: #111827;
+}
+
+.faq-title-box p {
+    margin-top: 14px;
+    font-size: 16px;
+    color: #64748b;
+}
+
+.faq-list {
+    border-top: 1px solid #e5e7eb;
+}
+
+.faq-item {
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.faq-question {
+    width: 100%;
+    padding: 24px 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    text-align: left;
+}
+
+.faq-question span {
+    position: relative;
+    padding-left: 18px;
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    color: #111827;
+}
+
+.faq-question span::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 11px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #145ce6;
+}
+
+.faq-question em {
+    position: relative;
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #f4f8ff;
+}
+
+.faq-question em::before,
+.faq-question em::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 12px;
+    height: 2px;
+    border-radius: 999px;
+    background: #145ce6;
+    transform: translate(-50%, -50%);
+    transition: .25s;
+}
+
+.faq-question em::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.faq-item.is-active .faq-question em::after {
+    transform: translate(-50%, -50%) rotate(0deg);
+    opacity: 0;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .35s ease;
+}
+
+.faq-answer>div {
+    padding: 0 0 28px 18px;
+    font-size: 17px;
+    line-height: 1.75;
+    color: #475569;
+    word-break: keep-all;
+}
+
+@media (max-width: 720px) {
+    .acrepair-faq-section {
+        padding: 70px 16px;
+    }
+
+    .faq-title-box h2 {
+        font-size: 28px;
+    }
+
+    .faq-question {
+        padding: 20px 0;
+    }
+
+    .faq-question span {
+        font-size: 17px;
+    }
+
+    .faq-answer>div {
+        font-size: 15px;
+    }
+}
+
+
+
+
+/* 11 긴급 CTA */
+.acrepair-emergency-section {
+    padding: 90px 20px;
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.258),
+            rgba(0, 0, 0, .55)),
+        url('./images/emergency-box.png') center center / cover no-repeat;
+
+}
+
+.acrepair-emergency-section .acrepair-container {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.emergency-box {
+    padding: 48px;
+    border-radius: 28px;
+    background:
+        radial-gradient(circle at 90% 10%, rgba(20, 92, 230, .32), transparent 35%),
+        linear-gradient(135deg, #ffffff 0%, #f4f8ff 100%);
+    box-shadow: 0 24px 60px rgba(15, 23, 42, .22);
+}
+
+.emergency-copy span {
+    display: inline-block;
+    margin-bottom: 14px;
+    font-size: 13px;
+    font-weight: 800;
+    color: #145ce6;
+}
+
+.emergency-copy h2 {
+    margin: 0;
+    font-size: 34px;
+    line-height: 1.35;
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    color: #111827;
+}
+
+.emergency-copy p {
+    margin: 22px 0 34px;
+    font-size: 17px;
+    line-height: 1.7;
+    color: #334155;
+    font-weight: 600;
+}
+
+.emergency-form {
+    display: grid;
+    gap: 14px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.emergency-form input,
+.emergency-form select {
+    width: 100%;
+    height: 54px;
+    padding: 0 16px;
+    border: 1px solid rgba(20, 92, 230, .14);
+    border-radius: 8px;
+    background: #fff;
+    font-size: 15px;
+    color: #111827;
+    outline: none;
+}
+
+.emergency-form input:focus,
+.emergency-form select:focus {
+    border-color: #145ce6;
+    box-shadow: 0 0 0 4px rgba(20, 92, 230, .1);
+}
+
+.emergency-form button {
+    height: 58px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+
+    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+
+    color: #FFF8E7;
+    ;
+
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 20px rgba(255, 184, 0, .25);
+
+    transition: .25s ease;
+}
+
+.emergency-form button:hover {
+    background: transparent;
+    border-color: #ffb800;
+    color: #ffb800;
+}
+
+.agree-check {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px;
+    font-size: 13px;
+    color: #64748b;
+}
+
+.agree-check input {
+    width: 16px;
+    height: 16px;
+}
+
+.agree-check a {
+    margin-left: 4px;
+    color: #64748b;
+    text-decoration: underline;
+}
+
+
+@media (max-width: 720px) {
+    .acrepair-emergency-section {
+        padding: 70px 16px;
+    }
+
+    .emergency-box {
+        padding: 34px 22px;
+        border-radius: 22px;
+    }
+
+    .emergency-copy h2 {
+        font-size: 28px;
+    }
+
+    .emergency-copy p {
+        font-size: 15px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+/* 12 하단 고정 버튼 */
+.acrepair-floating-call {
+    display: none;
+}
+
+@media (max-width: 768px) {
+
+    .acrepair-bottom-btn-call {
+        display: none;
+    }
+
+    .acrepair-floating-call {
+        position: fixed;
+        right: 16px;
+        bottom: 100px;
+
+        width: 62px;
+        height: 62px;
+
+        border-radius: 50%;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+
+        background: rgba(255, 255, 255, 0.18);
+
+        border: 1px solid rgba(255, 255, 255, 0.35);
+
+        box-shadow:
+            0 8px 24px rgba(15, 23, 42, .15),
+            inset 0 1px 1px rgba(255, 255, 255, .25);
+
+        z-index: 9999;
+
+        animation: phoneFloat 2s ease-in-out infinite;
+    }
+
+    .acrepair-floating-call img {
+        width: 26px;
+        height: 26px;
+    }
+}
+
+@keyframes phoneFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
