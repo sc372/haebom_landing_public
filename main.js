@@ -87,40 +87,92 @@ function randomItem(arr) {
 
 const liveTrack = document.querySelector(".acrepair-live-track");
 
-let html = "";
+const itemHeight = 56;
+let currentIndex = 0;
+let liveOriginalCount = 15;
 
-for (let i = 0; i < 15; i++) {
-  const name = randomItem(names);
-  const area = randomItem(areas);
-  const service = randomItem(services);
-  const status = randomItem(statuses);
-
-  html += `
-        <div class="acrepair-live-item">
-            <span class="acrepair-live-name">${name}</span>
-            <span class="acrepair-live-area">${area}</span>
-            <span class="acrepair-live-service">${service}</span>
-            <span class="acrepair-live-status ${status.class}">
-                ${status.text}
-            </span>
-        </div>
-    `;
+function escapeHtml(value) {
+  return String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 }
 
-liveTrack.innerHTML = html + html;
+function shuffleItems(items) {
+  const shuffled = [...items];
 
-const itemHeight = 56;
-const originalCount = 15;
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
 
-let currentIndex = 0;
+  return shuffled;
+}
+
+function renderLiveItems(items) {
+  if (!liveTrack || items.length === 0) return;
+
+  const html = items.map((item) => `
+        <div class="acrepair-live-item">
+            <span class="acrepair-live-name">${escapeHtml(item.name)}</span>
+            <span class="acrepair-live-area">${escapeHtml(item.area)}</span>
+            <span class="acrepair-live-service">${escapeHtml(item.service)}</span>
+            <span class="acrepair-live-status ${escapeHtml(item.status.class)}">
+                ${escapeHtml(item.status.text)}
+            </span>
+        </div>
+    `).join("");
+
+  liveOriginalCount = items.length;
+  currentIndex = 0;
+  liveTrack.style.transition = "none";
+  liveTrack.style.transform = "translateY(0)";
+  liveTrack.innerHTML = html + html;
+}
+
+function createMockLiveItems(count = 15) {
+  return Array.from({ length: count }, () => ({
+    name: randomItem(names),
+    area: randomItem(areas),
+    service: randomItem(services),
+    status: randomItem(statuses),
+  }));
+}
+
+function getTodayInquiryItems(data) {
+  const items = Array.isArray(data) ? data : data?.items || data?.data || [];
+
+  if (!Array.isArray(items)) return [];
+
+  return items.map((item) => {
+    const firstService = Array.isArray(item.services) ? item.services[0] : item.services;
+    const serviceName = typeof firstService === "object" && firstService !== null
+      ? firstService.label || firstService.name || firstService.codeName || firstService.code_id || ""
+      : firstService;
+
+    return {
+      name: item.customer_name || item.customerName || "고객",
+      area: item.customer_address || item.customerAddress || "-",
+      service: serviceName || "-",
+      status: randomItem(statuses),
+    };
+  });
+}
+
+const baseLiveItems = createMockLiveItems();
+renderLiveItems(baseLiveItems);
 
 setInterval(() => {
+  if (!liveTrack || liveOriginalCount === 0) return;
+
   currentIndex++;
 
   liveTrack.style.transition = "transform 800ms ease-in-out";
   liveTrack.style.transform = `translateY(-${currentIndex * itemHeight}px)`;
 
-  if (currentIndex >= originalCount) {
+  if (currentIndex >= liveOriginalCount) {
     setTimeout(() => {
       liveTrack.style.transition = "none";
       liveTrack.style.transform = "translateY(0)";
@@ -277,6 +329,28 @@ async function loadMockData() {
     if (Number.isFinite(Number(data.inquiryCounselCnt))) {
       counselCountEl.textContent = `${Number(data.inquiryCounselCnt).toLocaleString()}건`;
     }
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+async function loadTodayInquiries() {
+  try {
+    const res = await fetch(`${API_HOST}/api/v1/public/inquiry/today`, {
+      method: "GET",
+      headers: {
+        "X-Created-By": "landing",
+      },
+    });
+
+    if (!res.ok) throw new Error("today inquiry 조회 실패");
+
+    const data = await res.json();
+    const todayItems = getTodayInquiryItems(data);
+
+    if (todayItems.length === 0) return;
+
+    renderLiveItems(shuffleItems([...baseLiveItems, ...todayItems]));
   } catch (err) {
     console.error(err);
   }
@@ -545,6 +619,7 @@ function setupInquiryForm() {
 
 window.addEventListener("load", function () {
   loadMockData();
+  loadTodayInquiries();
   setupPhotoUpload();
   setupInquiryForm();
   const phoneInput = document.getElementById("userPhone");
