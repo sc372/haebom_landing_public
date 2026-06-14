@@ -301,6 +301,7 @@ function formatPhoneInput(input) {
 const API_HOST = ["localhost", "127.0.0.1"].includes(window.location.hostname)
   ? "http://127.0.0.1:8000"
   : "https://api.haebompartners.co.kr";
+const DEFAULT_MAX_PHOTO_UPLOAD_COUNT = 5;
 let selectedFiles = [];
 let selectedPhotoUrls = [];
 
@@ -527,11 +528,12 @@ function setupPhotoUpload() {
   if (!photoInput) return;
 
   photoInput.addEventListener("change", async function () {
+    const maxFileCount = Number(this.dataset.maxFiles) || DEFAULT_MAX_PHOTO_UPLOAD_COUNT;
     const newFiles = Array.from(this.files || []);
     const totalFiles = [...selectedFiles, ...newFiles];
 
-    if (totalFiles.length > 5) {
-      alert("사진은 최대 5개까지만 업로드 가능합니다.");
+    if (totalFiles.length > maxFileCount) {
+      alert(`사진은 최대 ${maxFileCount}개까지만 업로드 가능합니다.`);
       this.value = "";
       return;
     }
