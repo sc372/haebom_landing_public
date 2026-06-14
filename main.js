@@ -252,6 +252,36 @@ const API_HOST = ["localhost", "127.0.0.1"].includes(window.location.hostname)
 let selectedFiles = [];
 let selectedPhotoUrls = [];
 
+async function loadMockData() {
+  const inquiryCountEl = document.getElementById("today-inquiry-count");
+  const counselCountEl = document.getElementById("waiting-counsel-count");
+
+  if (!inquiryCountEl || !counselCountEl) return;
+
+  try {
+    const res = await fetch(`${API_HOST}/api/v1/public/inquiry/mock-data`, {
+      method: "GET",
+      headers: {
+        "X-Created-By": "landing",
+      },
+    });
+
+    if (!res.ok) throw new Error("mock-data 조회 실패");
+
+    const data = await res.json();
+
+    if (Number.isFinite(Number(data.inquiryCnt))) {
+      inquiryCountEl.textContent = `${Number(data.inquiryCnt).toLocaleString()}건`;
+    }
+
+    if (Number.isFinite(Number(data.inquiryCounselCnt))) {
+      counselCountEl.textContent = `${Number(data.inquiryCounselCnt).toLocaleString()}건`;
+    }
+  } catch (err) {
+    console.error(err);
+  }
+}
+
 function nowIsoWithOffset() {
   const d = new Date();
   const tz = -d.getTimezoneOffset();
@@ -514,6 +544,7 @@ function setupInquiryForm() {
 }
 
 window.addEventListener("load", function () {
+  loadMockData();
   setupPhotoUpload();
   setupInquiryForm();
   const phoneInput = document.getElementById("userPhone");
