@@ -690,37 +690,50 @@
                         </p>
                     </div>
 
-                    <form class="emergency-form">
+                    <form class="emergency-form" id="inquiryForm">
                         <div class="form-row">
-                            <input type="text" placeholder="이름">
-                            <input type="tel" placeholder="연락처">
+                            <input type="text" id="userName" name="userName" placeholder="이름" autocomplete="name" required>
+                            <input type="tel" id="userPhone" name="userPhone" placeholder="연락처" inputmode="numeric" autocomplete="tel" maxlength="13" required>
                         </div>
 
                         <div class="form-row">
-                            <select>
+                            <select id="userAddress" name="userAddress" required>
                                 <option value="">지역 선택</option>
-                                <option>서울</option>
-                                <option>경기</option>
-                                <option>인천</option>
-                                <option>기타 지역</option>
+                                <option value="서울">서울</option>
+                                <option value="경기">경기</option>
+                                <option value="인천">인천</option>
+                                <option value="기타 지역">기타 지역</option>
                             </select>
 
-                            <select>
+                            <select id="symptomSelect" name="symptom" required>
                                 <option value="">증상 선택</option>
-                                <option>냉방안됨</option>
-                                <option>누수</option>
-                                <option>난방안됨</option>
-                                <option>가스충전</option>
-                                <option>에러코드</option>
-                                <option>소음 문제</option>
-                                <option>기타 고장</option>
+                                <option value="냉방안됨" data-service-code="COOLING_NOT_WORKING">냉방안됨</option>
+                                <option value="누수" data-service-code="LEAK">누수</option>
+                                <option value="난방안됨" data-service-code="HEATING_NOT_WORKING">난방안됨</option>
+                                <option value="가스충전" data-service-code="GAS_CHARGE">가스충전</option>
+                                <option value="에러코드" data-service-code="ERROR_CODE">에러코드</option>
+                                <option value="소음 문제" data-service-code="NOISE">소음 문제</option>
+                                <option value="기타 고장" data-service-code="OTHER_FAILURE">기타 고장</option>
                             </select>
+                        </div>
+
+                        <div class="photo-upload-wrap">
+                            <label class="photo-upload-label" for="emergency-photo">
+                                <span class="photo-upload-icon">📷</span>
+                                <span class="photo-upload-copy">
+                                    <strong>사진 첨부(선택)</strong>
+                                    <small>고장 부분을 찍어 보내면 상담이 더 빨라져요.</small>
+                                </span>
+                            </label>
+                            <input type="file" id="emergency-photo" name="files" class="photo-upload-input" accept="image/*" multiple>
+                            <p class="photo-file-name" id="photo-file-name">선택된 사진이 없습니다. 모바일에서는 카메라로 바로 촬영해 첨부할 수 있어요.</p>
+                            <div class="photo-preview-row" id="photo-preview-row" aria-label="선택한 사진 미리보기"></div>
                         </div>
 
                         <button type="submit">무료 상담신청하기</button>
 
                         <label class="agree-check">
-                            <input type="checkbox">
+                            <input type="checkbox" id="agreeTerms">
                             <span>개인정보 수집 및 이용에 동의합니다.
                                 <a href="privacy.html" target="_blank" rel="noopener noreferrer">
                                     [보기]

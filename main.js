@@ -1,99 +1,101 @@
-
 // 01 히어로
 function typingLoop(targetId, text, speed = 120, delay = 2000) {
+  const target = document.getElementById(targetId);
 
-    const target = document.getElementById(targetId);
+  function startTyping() {
+    target.textContent = "";
 
-    function startTyping() {
+    let index = 0;
 
-        target.textContent = '';
+    const typing = setInterval(() => {
+      target.textContent += text[index];
+      index++;
 
-        let index = 0;
+      if (index >= text.length) {
+        clearInterval(typing);
 
-        const typing = setInterval(() => {
+        setTimeout(startTyping, delay);
+      }
+    }, speed);
+  }
 
-            target.textContent += text[index];
-            index++;
-
-            if (index >= text.length) {
-
-                clearInterval(typing);
-
-                setTimeout(startTyping, delay);
-            }
-
-        }, speed);
-    }
-
-    startTyping();
+  startTyping();
 }
 
-window.addEventListener('load', () => {
+window.addEventListener("load", () => {
+  typingLoop("cooling-word", "안 시원", 120, 2500);
 
-    typingLoop('cooling-word', '안 시원', 120, 2500);
-
-    setTimeout(() => {
-        typingLoop('service-word', '수리점검', 120, 2500);
-    }, 600);
-
+  setTimeout(() => {
+    typingLoop("service-word", "수리점검", 120, 2500);
+  }, 600);
 });
-
 
 // 03 실시간 접수현황
 const names = [
-    '김**', '이**', '박**', '최**', '정**',
-    '강**', '조**', '윤**', '장**', '임**',
-    '한**', '오**', '신**', '서**', '황**'
+  "김**",
+  "이**",
+  "박**",
+  "최**",
+  "정**",
+  "강**",
+  "조**",
+  "윤**",
+  "장**",
+  "임**",
+  "한**",
+  "오**",
+  "신**",
+  "서**",
+  "황**",
 ];
 
 const areas = [
-    '강남구',
-    '송파구',
-    '서초구',
-    '마포구',
-    '영등포구',
-    '분당구',
-    '수원시',
-    '용인시',
-    '고양시',
-    '성남시'
+  "강남구",
+  "송파구",
+  "서초구",
+  "마포구",
+  "영등포구",
+  "분당구",
+  "수원시",
+  "용인시",
+  "고양시",
+  "성남시",
 ];
 
 const services = [
-    '냉방안됨',
-    '누수',
-    '난방안됨',
-    '센서 불량',
-    '가스 누설',
-    '인버터 이상',
-    '전원 불량',
-    '에러코드',
-    '소음 문제',
+  "냉방안됨",
+  "누수",
+  "난방안됨",
+  "센서 불량",
+  "가스 누설",
+  "인버터 이상",
+  "전원 불량",
+  "에러코드",
+  "소음 문제",
 ];
 
 const statuses = [
-    { text: '접수완료', class: 'status-received' },
-    { text: '상담중', class: 'status-consulting' },
-    { text: '방문예정', class: 'status-visit' },
-    { text: '수리완료', class: 'status-done' }
+  { text: "접수완료", class: "status-received" },
+  { text: "상담중", class: "status-consulting" },
+  { text: "방문예정", class: "status-visit" },
+  { text: "수리완료", class: "status-done" },
 ];
 
 function randomItem(arr) {
-    return arr[Math.floor(Math.random() * arr.length)];
+  return arr[Math.floor(Math.random() * arr.length)];
 }
 
-const liveTrack = document.querySelector('.acrepair-live-track');
+const liveTrack = document.querySelector(".acrepair-live-track");
 
-let html = '';
+let html = "";
 
 for (let i = 0; i < 15; i++) {
+  const name = randomItem(names);
+  const area = randomItem(areas);
+  const service = randomItem(services);
+  const status = randomItem(statuses);
 
-    const name = randomItem(names);
-    const area = randomItem(areas);
-    const service = randomItem(services);
-    const status = randomItem(statuses);
-
-    html += `
+  html += `
         <div class="acrepair-live-item">
             <span class="acrepair-live-name">${name}</span>
             <span class="acrepair-live-area">${area}</span>
@@ -113,155 +115,451 @@ const originalCount = 15;
 let currentIndex = 0;
 
 setInterval(() => {
+  currentIndex++;
 
-    currentIndex++;
+  liveTrack.style.transition = "transform 800ms ease-in-out";
+  liveTrack.style.transform = `translateY(-${currentIndex * itemHeight}px)`;
 
-    liveTrack.style.transition = 'transform 800ms ease-in-out';
-    liveTrack.style.transform =
-        `translateY(-${currentIndex * itemHeight}px)`;
+  if (currentIndex >= originalCount) {
+    setTimeout(() => {
+      liveTrack.style.transition = "none";
+      liveTrack.style.transform = "translateY(0)";
 
-    if (currentIndex >= originalCount) {
-
-        setTimeout(() => {
-
-            liveTrack.style.transition = 'none';
-            liveTrack.style.transform = 'translateY(0)';
-
-            currentIndex = 0;
-
-        }, 800);
-
-    }
-
+      currentIndex = 0;
+    }, 800);
+  }
 }, 2600);
 
-
 // 06 실제사례
-document.addEventListener('DOMContentLoaded', function () {
-    const caseSwiper = new Swiper('.acrepair-case-swiper', {
-        loop: true,
-        centeredSlides: true,
+document.addEventListener("DOMContentLoaded", function () {
+  const caseSwiper = new Swiper(".acrepair-case-swiper", {
+    loop: true,
+    centeredSlides: true,
 
+    slidesPerView: 3,
+    spaceBetween: 5,
+
+    speed: 900,
+
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
+
+    observer: true,
+    observeParents: true,
+
+    breakpoints: {
+      0: {
+        slidesPerView: 1.3,
+        spaceBetween: 12,
+      },
+      768: {
         slidesPerView: 3,
-        spaceBetween: 5,
+        spaceBetween: 20,
+      },
+    },
+  });
 
-        speed: 900,
-
-        autoplay: {
-            delay: 3000,
-            disableOnInteraction: false
-        },
-
-        observer: true,
-        observeParents: true,
-
-        breakpoints: {
-            0: {
-                slidesPerView: 1.3,
-                spaceBetween: 12
-            },
-            768: {
-                slidesPerView: 3,
-                spaceBetween: 20
-            }
-        }
-    });
-
-    caseSwiper.autoplay.start();
+  caseSwiper.autoplay.start();
 });
 
-
-
 // 07 리뷰
-const counter = document.querySelector('.count-up');
+const counter = document.querySelector(".count-up");
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
 
-        const target = Number(counter.dataset.target);
-        let start = 7900;
-        let startTime = null;
-        const duration = 1800;
+      const target = Number(counter.dataset.target);
+      let start = 7900;
+      let startTime = null;
+      const duration = 1800;
 
-        function countUp(timestamp) {
-            if (!startTime) startTime = timestamp;
+      function countUp(timestamp) {
+        if (!startTime) startTime = timestamp;
 
-            const progress = Math.min((timestamp - startTime) / duration, 1);
-            const ease = 1 - Math.pow(1 - progress, 4);
-            const value = Math.floor(start + (target - start) * ease);
+        const progress = Math.min((timestamp - startTime) / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 4);
+        const value = Math.floor(start + (target - start) * ease);
 
-            counter.textContent = value.toLocaleString();
+        counter.textContent = value.toLocaleString();
 
-            if (progress < 1) {
-                requestAnimationFrame(countUp);
-            } else {
-                counter.textContent = target.toLocaleString();
-            }
+        if (progress < 1) {
+          requestAnimationFrame(countUp);
+        } else {
+          counter.textContent = target.toLocaleString();
         }
+      }
 
-        requestAnimationFrame(countUp);
-        observer.unobserve(counter);
+      requestAnimationFrame(countUp);
+      observer.unobserve(counter);
     });
-}, { threshold: 0.4 });
+  },
+  { threshold: 0.4 },
+);
 
 observer.observe(counter);
 
-
-
 // 10 FAQ
-document.addEventListener('DOMContentLoaded', function () {
-    const faqItems = document.querySelectorAll('.faq-item');
+document.addEventListener("DOMContentLoaded", function () {
+  const faqItems = document.querySelectorAll(".faq-item");
 
-    faqItems.forEach((item) => {
-        const question = item.querySelector('.faq-question');
-        const answer = item.querySelector('.faq-answer');
+  faqItems.forEach((item) => {
+    const question = item.querySelector(".faq-question");
+    const answer = item.querySelector(".faq-answer");
 
-        if (item.classList.contains('is-active')) {
-            answer.style.maxHeight = answer.scrollHeight + 'px';
-        }
+    if (item.classList.contains("is-active")) {
+      answer.style.maxHeight = answer.scrollHeight + "px";
+    }
 
-        question.addEventListener('click', () => {
-            const isActive = item.classList.contains('is-active');
+    question.addEventListener("click", () => {
+      const isActive = item.classList.contains("is-active");
 
-            faqItems.forEach((el) => {
-                el.classList.remove('is-active');
-                el.querySelector('.faq-answer').style.maxHeight = null;
-            });
+      faqItems.forEach((el) => {
+        el.classList.remove("is-active");
+        el.querySelector(".faq-answer").style.maxHeight = null;
+      });
 
-            if (!isActive) {
-                item.classList.add('is-active');
-                answer.style.maxHeight = answer.scrollHeight + 'px';
-            }
-        });
+      if (!isActive) {
+        item.classList.add("is-active");
+        answer.style.maxHeight = answer.scrollHeight + "px";
+      }
     });
+  });
 });
 
+function formatPhoneInput(input) {
+  const digits = input.value.replace(/\D/g, "").slice(0, 11);
 
-window.addEventListener('load', function () {
-    const btns = document.querySelectorAll('.js-scroll-consult');
-    const target = document.querySelector('.acrepair-emergency-section');
+  let formatted = digits;
 
-    btns.forEach(function (btn) {
-        btn.addEventListener('click', function (e) {
-            e.preventDefault();
+  if (digits.length > 3) {
+    formatted = `${digits.slice(0, 3)}-${digits.slice(3)}`;
+  }
 
-            const top = target.getBoundingClientRect().top + window.pageYOffset - 50;
+  if (digits.length > 7) {
+    formatted = `${digits.slice(0, 3)}-${digits.slice(3, 7)}-${digits.slice(7)}`;
+  }
 
-            window.scrollTo({
-                top: top,
-                behavior: 'smooth'
-            });
-        });
+  input.value = formatted;
+}
+
+const API_HOST = ["localhost", "127.0.0.1"].includes(window.location.hostname)
+  ? "http://127.0.0.1:8000"
+  : "https://api.haebompartners.co.kr";
+let selectedFiles = [];
+let selectedPhotoUrls = [];
+
+function nowIsoWithOffset() {
+  const d = new Date();
+  const tz = -d.getTimezoneOffset();
+  const sign = tz >= 0 ? "+" : "-";
+  const hh = String(Math.floor(Math.abs(tz) / 60)).padStart(2, "0");
+  const mm = String(Math.abs(tz) % 60).padStart(2, "0");
+  const local = new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 19);
+
+  return `${local}${sign}${hh}:${mm}`;
+}
+
+function getReferrerId() {
+  const url = new URL(window.location.href);
+
+  return url.searchParams.get("referrer_id") || url.searchParams.get("ref") || "";
+}
+
+async function compressImage(file, quality = 0.5) {
+  return new Promise((resolve) => {
+    const reader = new FileReader();
+
+    reader.onload = function (event) {
+      const img = new Image();
+
+      img.onload = function () {
+        const canvas = document.createElement("canvas");
+        const maxWidth = 1024;
+        const scale = Math.min(maxWidth / img.width, 1);
+
+        canvas.width = img.width * scale;
+        canvas.height = img.height * scale;
+
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+        canvas.toBlob(
+          (blob) => {
+            resolve(new File([blob], file.name, { type: "image/jpeg" }));
+          },
+          "image/jpeg",
+          quality,
+        );
+      };
+
+      img.src = event.target.result;
+    };
+
+    reader.readAsDataURL(file);
+  });
+}
+
+function updatePhotoName() {
+  const photoName = document.getElementById("photo-file-name");
+
+  if (!photoName) return;
+
+  if (selectedFiles.length > 0) {
+    photoName.textContent = `${selectedFiles.length}장 선택됨: ${selectedFiles.map((file) => file.name).join(", ")}`;
+    photoName.classList.add("is-filled");
+  } else {
+    photoName.textContent = "선택된 사진이 없습니다. 모바일에서는 카메라로 바로 촬영해 첨부할 수 있어요.";
+    photoName.classList.remove("is-filled");
+  }
+}
+
+function clearSelectedPhotos() {
+  selectedPhotoUrls.forEach((url) => URL.revokeObjectURL(url));
+  selectedFiles = [];
+  selectedPhotoUrls = [];
+}
+
+function renderPhotoPreviews() {
+  const previewRow = document.getElementById("photo-preview-row");
+
+  if (!previewRow) return;
+
+  previewRow.innerHTML = "";
+
+  selectedPhotoUrls.forEach((url, index) => {
+    const item = document.createElement("div");
+    item.className = "photo-thumb";
+
+    const previewButton = document.createElement("button");
+    previewButton.type = "button";
+    previewButton.className = "photo-thumb-button";
+    previewButton.setAttribute("aria-label", `${selectedFiles[index].name} 크게 보기`);
+    previewButton.addEventListener("click", () => openPhotoLightbox(url, selectedFiles[index].name));
+
+    const img = document.createElement("img");
+    img.src = url;
+    img.alt = selectedFiles[index].name;
+
+    const removeButton = document.createElement("button");
+    removeButton.type = "button";
+    removeButton.className = "photo-thumb-remove";
+    removeButton.setAttribute("aria-label", `${selectedFiles[index].name} 삭제`);
+    removeButton.textContent = "×";
+    removeButton.addEventListener("click", (e) => {
+      e.stopPropagation();
+      removeSelectedPhoto(index);
     });
+
+    previewButton.appendChild(img);
+    item.appendChild(previewButton);
+    item.appendChild(removeButton);
+    previewRow.appendChild(item);
+  });
+
+  updatePhotoName();
+}
+
+function removeSelectedPhoto(index) {
+  URL.revokeObjectURL(selectedPhotoUrls[index]);
+  selectedFiles.splice(index, 1);
+  selectedPhotoUrls.splice(index, 1);
+  renderPhotoPreviews();
+}
+
+function openPhotoLightbox(url, altText) {
+  const lightbox = document.createElement("div");
+  lightbox.className = "photo-lightbox";
+  lightbox.setAttribute("role", "dialog");
+  lightbox.setAttribute("aria-modal", "true");
+
+  const image = document.createElement("img");
+  image.src = url;
+  image.alt = altText;
+
+  const closeButton = document.createElement("button");
+  closeButton.type = "button";
+  closeButton.className = "photo-lightbox-close";
+  closeButton.setAttribute("aria-label", "확대 사진 닫기");
+  closeButton.textContent = "×";
+
+  function closeLightbox() {
+    document.removeEventListener("keydown", handleKeydown);
+    lightbox.remove();
+  }
+
+  function handleKeydown(e) {
+    if (e.key === "Escape") closeLightbox();
+  }
+
+  closeButton.addEventListener("click", closeLightbox);
+  lightbox.addEventListener("click", closeLightbox);
+  image.addEventListener("click", (e) => e.stopPropagation());
+  document.addEventListener("keydown", handleKeydown);
+
+  lightbox.appendChild(image);
+  lightbox.appendChild(closeButton);
+  document.body.appendChild(lightbox);
+  closeButton.focus();
+}
+
+function setupPhotoUpload() {
+  const photoInput = document.getElementById("emergency-photo");
+
+  if (!photoInput) return;
+
+  photoInput.addEventListener("change", async function () {
+    const newFiles = Array.from(this.files || []);
+    const totalFiles = [...selectedFiles, ...newFiles];
+
+    if (totalFiles.length > 5) {
+      alert("사진은 최대 5개까지만 업로드 가능합니다.");
+      this.value = "";
+      return;
+    }
+
+    for (const file of newFiles) {
+      if (!file.type.startsWith("image/")) {
+        alert("이미지 파일만 첨부 가능합니다.");
+        continue;
+      }
+
+      if (file.size > 50 * 1024 * 1024) {
+        alert(`"${file.name}" 파일은 50MB를 초과하여 업로드할 수 없습니다.`);
+        continue;
+      }
+
+      const compressedFile = await compressImage(file, 0.5);
+      selectedFiles.push(compressedFile);
+      selectedPhotoUrls.push(URL.createObjectURL(compressedFile));
+    }
+
+    this.value = "";
+    renderPhotoPreviews();
+  });
+}
+
+function getSelectedServiceCode() {
+  const symptomSelect = document.getElementById("symptomSelect");
+  const selectedOption = symptomSelect?.selectedOptions?.[0];
+
+  return selectedOption?.dataset.serviceCode || "COOLING_NOT_WORKING";
+}
+
+function setupInquiryForm() {
+  const form = document.getElementById("inquiryForm");
+
+  if (!form) return;
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const submitButton = form.querySelector('button[type="submit"]');
+    const name = document.getElementById("userName").value.trim();
+    const phoneDigits = document.getElementById("userPhone").value.replace(/\D/g, "");
+    const address = document.getElementById("userAddress").value.trim();
+    const agreeTerms = document.getElementById("agreeTerms");
+
+    if (!agreeTerms.checked) {
+      alert("개인정보 수집 및 이용에 동의해 주세요.");
+      agreeTerms.focus();
+      return;
+    }
+
+    if (phoneDigits.startsWith("010") && phoneDigits.length !== 11) {
+      alert("휴대폰 번호는 11자리로 입력해 주세요.");
+      return;
+    }
+
+    if (phoneDigits.length < 10) {
+      alert("연락처를 정확히 입력해 주세요.");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("inquiry_data", JSON.stringify({
+      inquiryType: "SERVICE",
+      inquiryDatetime: nowIsoWithOffset(),
+      referrerId: getReferrerId(),
+      customerName: name,
+      customerPhoneNumber: phoneDigits,
+      customerAddress: address,
+      callableCodeId: "CALLABLE_AM",
+      inquiryMemo: "",
+      serviceCodeIds: [getSelectedServiceCode()],
+    }));
+
+    selectedFiles.forEach((file) => formData.append("files", file));
+
+    try {
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = "접수 중...";
+      }
+
+      const res = await fetch(`${API_HOST}/api/v1/public/inquiry`, {
+        method: "POST",
+        headers: {
+          "X-Created-By": "landing",
+        },
+        body: formData,
+      });
+
+      if (!res.ok) {
+        const msg = await res.text();
+        throw new Error(msg || "네트워크 오류");
+      }
+
+      alert("접수가 완료되었습니다! 감사합니다.");
+      form.reset();
+      clearSelectedPhotos();
+      renderPhotoPreviews();
+    } catch (err) {
+      console.error(err);
+      alert("접수 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.");
+    } finally {
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = "무료 상담신청하기";
+      }
+    }
+  });
+}
+
+window.addEventListener("load", function () {
+  setupPhotoUpload();
+  setupInquiryForm();
+  const phoneInput = document.getElementById("userPhone");
+
+  if (phoneInput) {
+    phoneInput.addEventListener("input", function () {
+      formatPhoneInput(this);
+    });
+  }
+
+  const btns = document.querySelectorAll(".js-scroll-consult");
+  const target = document.querySelector(".acrepair-emergency-section");
+
+  btns.forEach(function (btn) {
+    btn.addEventListener("click", function (e) {
+      e.preventDefault();
+
+      const top = target.getBoundingClientRect().top + window.pageYOffset - 50;
+
+      window.scrollTo({
+        top: top,
+        behavior: "smooth",
+      });
+    });
+  });
 });
-
-
-
 
 // 애니메이션
 AOS.init({
-    duration: 800,
-    easing: 'ease-out',
-    once: true
+  duration: 800,
+  easing: "ease-out",
+  once: true,
 });
