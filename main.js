@@ -303,20 +303,6 @@ async function compressImage(file, quality = 0.5) {
   });
 }
 
-function updatePhotoName() {
-  const photoName = document.getElementById("photo-file-name");
-
-  if (!photoName) return;
-
-  if (selectedFiles.length > 0) {
-    photoName.textContent = `${selectedFiles.length}장 선택됨: ${selectedFiles.map((file) => file.name).join(", ")}`;
-    photoName.classList.add("is-filled");
-  } else {
-    photoName.textContent = "선택된 사진이 없습니다. 모바일에서는 카메라로 바로 촬영해 첨부할 수 있어요.";
-    photoName.classList.remove("is-filled");
-  }
-}
-
 function clearSelectedPhotos() {
   selectedPhotoUrls.forEach((url) => URL.revokeObjectURL(url));
   selectedFiles = [];
@@ -359,8 +345,6 @@ function renderPhotoPreviews() {
     item.appendChild(removeButton);
     previewRow.appendChild(item);
   });
-
-  updatePhotoName();
 }
 
 function removeSelectedPhoto(index) {
