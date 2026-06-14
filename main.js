@@ -304,6 +304,33 @@ const API_HOST = ["localhost", "127.0.0.1"].includes(window.location.hostname)
 let selectedFiles = [];
 let selectedPhotoUrls = [];
 
+function animateStatusCount(target, endValue, duration = 1200) {
+  const end = Number(endValue);
+
+  if (!target || !Number.isFinite(end)) return;
+
+  let startTime = null;
+  target.textContent = "0건";
+
+  function update(timestamp) {
+    if (!startTime) startTime = timestamp;
+
+    const progress = Math.min((timestamp - startTime) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const value = Math.floor(end * eased);
+
+    target.textContent = `${value.toLocaleString()}건`;
+
+    if (progress < 1) {
+      requestAnimationFrame(update);
+    } else {
+      target.textContent = `${end.toLocaleString()}건`;
+    }
+  }
+
+  requestAnimationFrame(update);
+}
+
 async function loadMockData() {
   const inquiryCountEl = document.getElementById("today-inquiry-count");
   const counselCountEl = document.getElementById("waiting-counsel-count");
@@ -323,11 +350,11 @@ async function loadMockData() {
     const data = await res.json();
 
     if (Number.isFinite(Number(data.inquiryCnt))) {
-      inquiryCountEl.textContent = `${Number(data.inquiryCnt).toLocaleString()}건`;
+      animateStatusCount(inquiryCountEl, data.inquiryCnt);
     }
 
     if (Number.isFinite(Number(data.inquiryCounselCnt))) {
-      counselCountEl.textContent = `${Number(data.inquiryCounselCnt).toLocaleString()}건`;
+      animateStatusCount(counselCountEl, data.inquiryCounselCnt);
     }
   } catch (err) {
     console.error(err);
