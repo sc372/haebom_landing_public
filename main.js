@@ -50,16 +50,11 @@ const names = [
 ];
 
 const areas = [
-  "강남구",
-  "송파구",
-  "서초구",
-  "마포구",
-  "영등포구",
-  "분당구",
-  "수원시",
-  "용인시",
-  "고양시",
-  "성남시",
+  "광명시",
+  "부천시",
+  "안양시",
+  "부평구",
+  "시흥시",
 ];
 
 const services = [
@@ -163,6 +158,11 @@ function getTodayInquiryItems(data) {
 
 const baseLiveItems = createMockLiveItems();
 renderLiveItems(baseLiveItems);
+
+const footerYear = document.getElementById("footer-year");
+if (footerYear) {
+  footerYear.textContent = new Date().getFullYear();
+}
 
 setInterval(() => {
   if (!liveTrack || liveOriginalCount === 0) return;

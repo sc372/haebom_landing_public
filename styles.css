@@ -2377,3 +2377,139 @@ body {
         transform: translateY(-5px);
     }
 }
+
+/* 13 푸터 */
+.acrepair-footer {
+    background:
+        radial-gradient(circle at top left, rgba(20, 92, 230, 0.18), transparent 42%),
+        linear-gradient(180deg, #0f172a 0%, #111c36 100%);
+    color: rgba(255, 255, 255, 0.86);
+    padding: 52px 24px 36px;
+}
+
+.acrepair-footer-inner {
+    text-align: center;
+}
+
+.acrepair-footer-brand {
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: #ffffff;
+}
+
+.acrepair-footer-tagline {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #f8fbff;
+}
+
+.acrepair-footer-highlights {
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 1.45;
+    color: rgba(255, 255, 255, 0.74);
+}
+
+.acrepair-footer-highlight-item {
+    display: inline;
+}
+
+.acrepair-footer-highlight-sep {
+    margin: 0 6px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.acrepair-footer-info {
+    margin-top: 28px;
+    display: grid;
+    gap: 5px;
+    font-size: 14px;
+    line-height: 1.45;
+    color: rgba(255, 255, 255, 0.78);
+}
+
+.acrepair-footer-info a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.acrepair-footer-info a:hover {
+    text-decoration: underline;
+}
+
+.acrepair-footer-hours {
+    margin-top: 20px;
+    font-size: 14px;
+    line-height: 1.45;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.acrepair-footer-notice {
+    margin-top: 18px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.62);
+}
+
+.acrepair-footer-links {
+    margin-top: 22px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 14px;
+}
+
+.acrepair-footer-links a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.acrepair-footer-links a:hover {
+    opacity: 0.72;
+}
+
+.acrepair-footer-copyright {
+    margin-top: 22px;
+    font-size: 13px;
+    line-height: 1.45;
+    color: rgba(255, 255, 255, 0.58);
+}
+
+@media (max-width: 768px) {
+    .acrepair-footer {
+        padding: 44px 18px 30px;
+    }
+
+    .acrepair-footer-brand {
+        font-size: 26px;
+    }
+
+    .acrepair-footer-tagline {
+        font-size: 16px;
+    }
+
+    .acrepair-footer-highlights {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 4px 0;
+    }
+
+    .acrepair-footer-highlight-item,
+    .acrepair-footer-highlight-sep {
+        white-space: nowrap;
+    }
+
+    .acrepair-footer-info {
+        gap: 6px;
+    }
+
+    .acrepair-footer-links {
+        gap: 8px;
+    }
+}
