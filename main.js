@@ -49,13 +49,7 @@ const names = [
   "황**",
 ];
 
-const areas = [
-  "광명시",
-  "부천시",
-  "안양시",
-  "부평구",
-  "시흥시",
-];
+const areas = ["구로구", "양천구", "영등포구", "강서구", "금천구", "관악구"];
 
 const services = [
   "냉방안됨",
@@ -109,7 +103,9 @@ function shuffleItems(items) {
 function renderLiveItems(items) {
   if (!liveTrack || items.length === 0) return;
 
-  const html = items.map((item) => `
+  const html = items
+    .map(
+      (item) => `
         <div class="acrepair-live-item">
             <span class="acrepair-live-name">${escapeHtml(item.name)}</span>
             <span class="acrepair-live-area">${escapeHtml(item.area)}</span>
@@ -118,7 +114,9 @@ function renderLiveItems(items) {
                 ${escapeHtml(item.status.text)}
             </span>
         </div>
-    `).join("");
+    `,
+    )
+    .join("");
 
   liveOriginalCount = items.length;
   currentIndex = 0;
@@ -142,10 +140,17 @@ function getTodayInquiryItems(data) {
   if (!Array.isArray(items)) return [];
 
   return items.map((item) => {
-    const firstService = Array.isArray(item.services) ? item.services[0] : item.services;
-    const serviceName = typeof firstService === "object" && firstService !== null
-      ? firstService.label || firstService.name || firstService.codeName || firstService.code_id || ""
-      : firstService;
+    const firstService = Array.isArray(item.services)
+      ? item.services[0]
+      : item.services;
+    const serviceName =
+      typeof firstService === "object" && firstService !== null
+        ? firstService.label ||
+          firstService.name ||
+          firstService.codeName ||
+          firstService.code_id ||
+          ""
+        : firstService;
 
     return {
       name: item.customer_name || item.customerName || "고객",
@@ -390,7 +395,9 @@ function nowIsoWithOffset() {
   const sign = tz >= 0 ? "+" : "-";
   const hh = String(Math.floor(Math.abs(tz) / 60)).padStart(2, "0");
   const mm = String(Math.abs(tz) % 60).padStart(2, "0");
-  const local = new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 19);
+  const local = new Date(d.getTime() - d.getTimezoneOffset() * 60000)
+    .toISOString()
+    .slice(0, 19);
 
   return `${local}${sign}${hh}:${mm}`;
 }
@@ -398,7 +405,9 @@ function nowIsoWithOffset() {
 function getReferrerId() {
   const url = new URL(window.location.href);
 
-  return url.searchParams.get("referrer_id") || url.searchParams.get("ref") || "";
+  return (
+    url.searchParams.get("referrer_id") || url.searchParams.get("ref") || ""
+  );
 }
 
 async function compressImage(file, quality = 0.5) {
@@ -455,8 +464,13 @@ function renderPhotoPreviews() {
     const previewButton = document.createElement("button");
     previewButton.type = "button";
     previewButton.className = "photo-thumb-button";
-    previewButton.setAttribute("aria-label", `${selectedFiles[index].name} 크게 보기`);
-    previewButton.addEventListener("click", () => openPhotoLightbox(url, selectedFiles[index].name));
+    previewButton.setAttribute(
+      "aria-label",
+      `${selectedFiles[index].name} 크게 보기`,
+    );
+    previewButton.addEventListener("click", () =>
+      openPhotoLightbox(url, selectedFiles[index].name),
+    );
 
     const img = document.createElement("img");
     img.src = url;
@@ -465,7 +479,10 @@ function renderPhotoPreviews() {
     const removeButton = document.createElement("button");
     removeButton.type = "button";
     removeButton.className = "photo-thumb-remove";
-    removeButton.setAttribute("aria-label", `${selectedFiles[index].name} 삭제`);
+    removeButton.setAttribute(
+      "aria-label",
+      `${selectedFiles[index].name} 삭제`,
+    );
     removeButton.textContent = "×";
     removeButton.addEventListener("click", (e) => {
       e.stopPropagation();
@@ -528,7 +545,8 @@ function setupPhotoUpload() {
   if (!photoInput) return;
 
   photoInput.addEventListener("change", async function () {
-    const maxFileCount = Number(this.dataset.maxFiles) || DEFAULT_MAX_PHOTO_UPLOAD_COUNT;
+    const maxFileCount =
+      Number(this.dataset.maxFiles) || DEFAULT_MAX_PHOTO_UPLOAD_COUNT;
     const newFiles = Array.from(this.files || []);
     const totalFiles = [...selectedFiles, ...newFiles];
 
@@ -576,7 +594,9 @@ function setupInquiryForm() {
 
     const submitButton = form.querySelector('button[type="submit"]');
     const name = document.getElementById("userName").value.trim();
-    const phoneDigits = document.getElementById("userPhone").value.replace(/\D/g, "");
+    const phoneDigits = document
+      .getElementById("userPhone")
+      .value.replace(/\D/g, "");
     const address = document.getElementById("userAddress").value.trim();
     const agreeTerms = document.getElementById("agreeTerms");
 
@@ -597,17 +617,20 @@ function setupInquiryForm() {
     }
 
     const formData = new FormData();
-    formData.append("inquiry_data", JSON.stringify({
-      inquiryType: "SERVICE",
-      inquiryDatetime: nowIsoWithOffset(),
-      referrerId: getReferrerId(),
-      customerName: name,
-      customerPhoneNumber: phoneDigits,
-      customerAddress: address,
-      callableCodeId: "CALLABLE_AM",
-      inquiryMemo: "",
-      serviceCodeIds: [getSelectedServiceCode()],
-    }));
+    formData.append(
+      "inquiry_data",
+      JSON.stringify({
+        inquiryType: "SERVICE",
+        inquiryDatetime: nowIsoWithOffset(),
+        referrerId: getReferrerId(),
+        customerName: name,
+        customerPhoneNumber: phoneDigits,
+        customerAddress: address,
+        callableCodeId: "CALLABLE_AM",
+        inquiryMemo: "",
+        serviceCodeIds: [getSelectedServiceCode()],
+      }),
+    );
 
     selectedFiles.forEach((file) => formData.append("files", file));
 
